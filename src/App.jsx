@@ -14,6 +14,7 @@ function App() {
 
   return (
     <div className="background footer-fix">
+          <img className="poopy-img" src="https://res.cloudinary.com/dcx1rcwvu/image/upload/v1630686328/rick%20and%20morty/PikPng.com_rick-and-morty-png_3568759_lo2kna.png" />
       <Header />
       <NavRB />
       <Container>

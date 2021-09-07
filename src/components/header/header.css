@@ -1,16 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap');
+
+
 .header-style {
     background:linear-gradient(rgba(0, 0, 0, 0.1), rgba(3, 10, 0, 0.651)), url(https://res.cloudinary.com/dcx1rcwvu/image/upload/v1630687788/rick%20and%20morty/RICKYMORTYAS_jg7to6.jpg) no-repeat top ;
-    height:90vh;
+    height:100vh;
     width: 100%;
     background-size: cover !important;
     overflow: hidden;
     text-align: center;
     color: white;
+    font-family: 'Patrick Hand SC', cursive;
+}
 
+.title-img {
+    position: absolute;
+    top: 0%;
 }
-.poopy-img {
-    position: fixed;
-    right: 2%;
-    width: 10% ;
-    bottom: 10%;
+.subtitle {
+position: absolute;
+ top: 30%;
+color: #258cac;
+/* background: #ffffff00;
+text-shadow: 1px 0px 1px #b9c45c, 0px 1px 1px #EEEEEE, 2px 1px 1px #b9c45c, 1px 2px 1px #EEEEEE, 3px 2px 1px #b9c45c, 2px 3px 1px #EEEEEE, 4px 3px 1px #b9c45c, 3px 4px 1px #EEEEEE, 5px 4px 1px #b9c45c, 4px 5px 1px #EEEEEE, 6px 5px 1px #b9c45c, 5px 6px 1px #EEEEEE, 7px 6px 1px #b9c45c; */
+/* color: #FFFFFF; */
+background: #00000000;
+text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 10px #49ff18, 0 0 10px #49FF18, 0 0 10px #49FF18, 0 0 15px #49FF18, 0 0 20px #49ff18;
 }
+

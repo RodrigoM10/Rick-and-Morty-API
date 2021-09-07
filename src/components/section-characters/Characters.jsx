@@ -11,7 +11,7 @@ export default function Characters(props) {
     const [characters, setCharacters] = useState([]);
     const [info, setInfo] = useState([]);
     const [page, setPage] = useState(1);
-    const [name, setName] = useState('rick');
+    const [name, setName] = useState('');
     const [status, setStatus] = useState('');
     const [species, setSpecies] = useState('');
 
@@ -48,7 +48,7 @@ export default function Characters(props) {
     return (
         <>
             <h2>Personajes de Rick and Morty</h2>
-            <div className="d-flex flex-wrap justify-content-between">
+            <div className="row row-cols-3 justify-content-start align-items-center">
                 {mapCharacters}
             </div>
             <div className="d-flex justify-content-center my-4">

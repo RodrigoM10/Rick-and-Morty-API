@@ -1,4 +1,10 @@
 .navbar{
-    height: 10hv;
-    width: 100%;
+    background-color: rgba(0, 0, 0, 0.623) !important;
+    color: white !important;
+}
+.navbar-logo{
+    display: inline-block;
+    align-items: top;
+    width: 100px;
+    margin: 0;
 }
