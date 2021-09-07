@@ -1,0 +1,10 @@
+.footer-fix {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.background {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(121, 121, 121, 0.8)), url(https://res.cloudinary.com/dcx1rcwvu/image/upload/v1630685760/rick%20and%20morty/rick_mortybackground_jr2l4i.png);
+  width: 100%;
+  background-size: contain !important;
+}

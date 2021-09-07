@@ -1,0 +1,16 @@
+.header-style {
+    background:linear-gradient(rgba(0, 0, 0, 0.1), rgba(3, 10, 0, 0.651)), url(https://res.cloudinary.com/dcx1rcwvu/image/upload/v1630687788/rick%20and%20morty/RICKYMORTYAS_jg7to6.jpg) no-repeat top ;
+    height:90vh;
+    width: 100%;
+    background-size: cover !important;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+
+}
+.poopy-img {
+    position: fixed;
+    right: 2%;
+    width: 10% ;
+    bottom: 10%;
+}
