@@ -48,7 +48,7 @@ export default function Characters(props) {
     return (
         <>
             <h2>Personajes de Rick and Morty</h2>
-            <div className="row row-cols-3 justify-content-start align-items-center">
+            <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                 {mapCharacters}
             </div>
             <div className="d-flex justify-content-center my-4">

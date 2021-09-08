@@ -1,6 +1,14 @@
 .card-character{
-    width: 20rem;
+    width: 35rem;
     margin: 1rem;
-    background: rgb(8, 76, 121);
+    background: rgb(15, 69, 77);
     color: white;
+    border: 2px solid black;
+    border-radius: 0 1rem 1rem 0;
+
+}
+.char-img {
+    border-right : 2px solid black;
+    width: 15rem;
+    height: auto;
 }

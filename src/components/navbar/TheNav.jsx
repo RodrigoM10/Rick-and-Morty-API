@@ -1,8 +1,9 @@
 import { Navbar, Nav, Container, Form, FormControl, Button, NavDropdown, FloatingLabel } from 'react-bootstrap';
-import React from 'react'
+import React, { useState } from 'react'
 import './theNav.css'
 
 export const NavRB = (props) => {
+    const { name, setName } = props;
 
 
     return (
@@ -13,7 +14,7 @@ export const NavRB = (props) => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto" >
-                    <Nav.Link>All characters</Nav.Link>
+                    <Nav.Link onClick={() => setName('rick')}>All characters</Nav.Link>
                     <Nav.Link>All Ricks</Nav.Link>
                     <Nav.Link>All Mortys</Nav.Link>
                     <Nav.Link>Interdimensional Cable Stars</Nav.Link>
@@ -31,14 +32,19 @@ export const NavRB = (props) => {
                                         label={`Dead`}
                                         id={`${type}`}
                                     />
+                                    <Form.Check
+                                        type={type}
+                                        label={`unknown`}
+                                        id={`${type}`}
+                                    />
                                 </div>
                             ))}
                             <FloatingLabel controlId="floatingSelect" label="Specie">
-                            <Form.Select>
-                                <option>Human</option>
-                                <option>Alien</option>
-                                <option>Other</option>
-                            </Form.Select>
+                                <Form.Select>
+                                    <option>Human</option>
+                                    <option>Alien</option>
+                                    <option>Other</option>
+                                </Form.Select>
                             </FloatingLabel>
                         </Form>
                     </NavDropdown>
