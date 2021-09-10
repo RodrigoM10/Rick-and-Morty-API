@@ -4,8 +4,9 @@ import './character.css';
 
 export default function Character({ character }) {
   const { name, status, species, location, image} = character;
-  // const {name, url} = origin;
   // const {name, url} = location;
+
+
 
   return (
     <div className="my-2 px-0 card-character row ">
