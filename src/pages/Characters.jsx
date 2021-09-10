@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Pagination } from 'react-bootstrap';
 import Character from '../components/card-character/Character';
+import PaginationRB from '../components/pagination/Pagination';
 import './characters.css'
 
 
@@ -13,11 +13,8 @@ export default function Characters(props) {
     
     const{name, setName, species, setSpecies} = props;
 
-
-
     const [page, setPage] = useState(1);
     const [status, setStatus] = useState('');
-
 
     useEffect(() => {
         const request = async () => {
@@ -46,16 +43,6 @@ export default function Characters(props) {
     }, [page, name, status, species]);
 
     const mapCharacters = characters.map((char) => <Character key={char.id} character={char} /> );
-    
-    
-
-
-
-
-    const prevPage = () => { setPage(page - 1) };
-    const nextPage = () => { setPage(page + 1) };
-    const firstPage = () => { setPage(1) };
-    const lastPage = () => setPage((info.pages));
 
     return (
         <>
@@ -63,17 +50,8 @@ export default function Characters(props) {
             <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                 {mapCharacters}
             </div>
-            <div className="d-flex justify-content-center my-4">
-                <Pagination size="lg">
-                    <Pagination.Prev onClick={prevPage} disabled={page === 1} />
-                    <Pagination.Item onClick={firstPage} disabled={page === 1} >{1}</Pagination.Item>
-                    <Pagination.Ellipsis disabled />
-                    <Pagination.Item active>{page}</Pagination.Item>
-                    <Pagination.Ellipsis disabled />
-                    <Pagination.Item onClick={lastPage} disabled={page === info.pages} >{info.pages}</Pagination.Item>
-                    <Pagination.Next onClick={nextPage} disabled={page === info.pages} />
-                </Pagination>
-            </div>
+            <PaginationRB setPage={setPage} page={page} info={info}/>
+            
         </>
     );
 };
