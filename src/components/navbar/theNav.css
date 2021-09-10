@@ -1,5 +1,8 @@
 .navbar{
-    background-color: rgba(0, 0, 0, 0.623) !important;
+   
+  backdrop-filter: blur(10px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+  background-color: #111928b0 !important;
     color: white !important;
 }
 .navbar-logo{
@@ -7,4 +10,15 @@
     align-items: top;
     width: 100px;
     margin: 0;
+}
+
+
+/* // Glassmorphism */
+
+.glass-card {
+  backdrop-filter: blur(10px) saturate(180%);
+  -webkit-backdrop-filter: blur(10px) saturate(180%);
+  background-color: #111928b0;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
 }

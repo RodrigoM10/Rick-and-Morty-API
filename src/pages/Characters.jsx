@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Pagination } from 'react-bootstrap';
-import Character from '../card-character/Character';
+import Character from '../components/card-character/Character';
 import './characters.css'
 
 

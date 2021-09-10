@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Pagination } from 'react-bootstrap';
-import Character from '../card-character/Character';
+import Character from '../components/card-character/Character';
+
 import './characters.css'
 
 
-export default function Mortys(props) {
+export default function InterdimensionalTV(props) {
 
 // ESTA SECCION SOLO CONTIENE A LOS DIFERENTES MORTYS 
 
@@ -13,14 +14,16 @@ export default function Mortys(props) {
     const [characters, setCharacters] = useState([]);
     const [info, setInfo] = useState([]);
     
-     
-    const{name, setName, species, setSpecies} = props;
-    setName('morty');
+    const {name, setName, species, setSpecies} = props;
+    setName('');
 
 
     const [page, setPage] = useState(1);
     const [status, setStatus] = useState('');
-    // const [species, setSpecies] = useState('');
+
+
+// const [locationName, setLocationName] = useState('Interdimensional Cable');
+
 
 
 
@@ -46,7 +49,7 @@ export default function Mortys(props) {
         
     }, [page, name, status, species]);
     
-    const mapCharacters = characters.map((char) => <Character key={char.id} character={char} /> );
+    const mapCharacters = characters.map((char) => ((char.location.name === 'Interdimensional Cable') && <Character key={char.id} character={char} /> ));
 
     const prevPage = () => { setPage(page - 1) };
     const nextPage = () => { setPage(page + 1) };
@@ -55,7 +58,7 @@ export default function Mortys(props) {
 
     return (
         <>
-            <h2>ALL THE MORTYS</h2>
+         <h2>Interdimensional <s>f*cking</s> Cable Stars</h2>
             <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                 {mapCharacters}
             </div>
@@ -73,3 +76,7 @@ export default function Mortys(props) {
         </>
     );
 };
+
+
+
+

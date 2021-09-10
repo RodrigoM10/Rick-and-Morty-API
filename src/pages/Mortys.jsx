@@ -1,20 +1,22 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Pagination } from 'react-bootstrap';
-import Character from '../card-character/Character';
+import Character from '../components/card-character/Character';
+
 import './characters.css'
 
 
-export default function Ricks(props) {
+export default function Mortys(props) {
 
-// ESTA SECCION SOLO CONTIENE A LOS DIFERENTES RICKS 
+// ESTA SECCION SOLO CONTIENE A LOS DIFERENTES MORTYS 
 
 
     const [characters, setCharacters] = useState([]);
     const [info, setInfo] = useState([]);
     
+     
     const{name, setName, species, setSpecies} = props;
-    setName('rick');
+    setName('morty');
 
 
     const [page, setPage] = useState(1);
@@ -54,7 +56,7 @@ export default function Ricks(props) {
 
     return (
         <>
-            <h2>ALL THE RICKS</h2>
+            <h2>ALL THE MORTYS</h2>
             <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                 {mapCharacters}
             </div>
@@ -72,4 +74,3 @@ export default function Ricks(props) {
         </>
     );
 };
-

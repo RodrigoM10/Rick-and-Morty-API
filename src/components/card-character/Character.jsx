@@ -11,7 +11,7 @@ export default function Character({ character }) {
   return (
     <div className="my-2 px-0 card-character row ">
       <div className="col-6 px-0">
-        <Card.Img className="rounded-0 char-img" src={image} />
+        <Card.Img className="rounded-0 char-img glass-card" src={image} />
       </div>
           <Card.Body className="col-6 d-flex flex-column justify-content-center align-items-start" >
                 <Card.Title>{name}

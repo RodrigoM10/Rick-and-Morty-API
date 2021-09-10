@@ -31,7 +31,7 @@ export const NavRB = (props) => {
 
 
     return (
-        <Navbar className="navbar sticky-top py-1 px-3" bg="dark" variant="dark" expand="lg">
+        <Navbar className="navbar sticky-top py-1 px-3 " bg="dark" variant="dark" expand="lg">
             <Navbar.Brand href="#home" className="my-0 p-0">
                 <img className="navbar-logo" src="https://res.cloudinary.com/dcx1rcwvu/image/upload/v1631039078/rick%20and%20morty/rick-and-morty-31043_zhj8so.png" />
             </Navbar.Brand>
@@ -65,10 +65,10 @@ export const NavRB = (props) => {
                             ))}
                             <FloatingLabel controlId="floatingSelect" label="Specie">
                                 <Form.Select onChange={changeSpecies}>
+                                    <option value="">All species</option>
                                     <option value="Human">Human</option>
                                     <option value="Alien">Alien</option>
-                                    <option value="Aniamal">Animal</option>
-                                    <option value="Aniamal"></option>
+                                    <option value="Animal">Animal</option>
                                 </Form.Select>
                             </FloatingLabel>
                         </Form>

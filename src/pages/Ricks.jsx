@@ -1,28 +1,25 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Pagination } from 'react-bootstrap';
-import Character from '../card-character/Character';
+import Character from '../components/card-character/Character';
 import './characters.css'
 
 
-export default function InterdimensionalTV(props) {
+export default function Ricks(props) {
 
-// ESTA SECCION SOLO CONTIENE A LOS DIFERENTES MORTYS 
+// ESTA SECCION SOLO CONTIENE A LOS DIFERENTES RICKS 
 
 
     const [characters, setCharacters] = useState([]);
     const [info, setInfo] = useState([]);
     
-    const {name, setName, species, setSpecies} = props;
-    setName('');
+    const{name, setName, species, setSpecies} = props;
+    setName('rick');
 
 
     const [page, setPage] = useState(1);
     const [status, setStatus] = useState('');
-
-
-// const [locationName, setLocationName] = useState('Interdimensional Cable');
-
+    // const [species, setSpecies] = useState('');
 
 
 
@@ -48,7 +45,7 @@ export default function InterdimensionalTV(props) {
         
     }, [page, name, status, species]);
     
-    const mapCharacters = characters.map((char) => ((char.location.name === 'Interdimensional Cable') && <Character key={char.id} character={char} /> ));
+    const mapCharacters = characters.map((char) => <Character key={char.id} character={char} /> );
 
     const prevPage = () => { setPage(page - 1) };
     const nextPage = () => { setPage(page + 1) };
@@ -57,7 +54,7 @@ export default function InterdimensionalTV(props) {
 
     return (
         <>
-         <h2>Interdimensional <s>f*cking</s> Cable Stars</h2>
+            <h2>ALL THE RICKS</h2>
             <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                 {mapCharacters}
             </div>
@@ -75,7 +72,4 @@ export default function InterdimensionalTV(props) {
         </>
     );
 };
-
-
-
 

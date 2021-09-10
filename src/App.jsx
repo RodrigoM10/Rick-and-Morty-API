@@ -7,10 +7,10 @@ import { NavRB } from "./components/navbar/TheNav";
 import { Container } from "react-bootstrap";
 import Footer from "./components/footer/Footer";
 import { useState } from "react";
-import Characters from "./components/pages/Characters";
-import Ricks from "./components/pages/Ricks";
-import Mortys from "./components/pages/Mortys";
-import InterdimensionalTV from "./components/pages/InterdimensionalTV";
+import Characters from "./pages/Characters";
+import Ricks from "./pages/Ricks";
+import Mortys from "./pages/Mortys";
+import InterdimensionalTV from "./pages/InterdimensionalTV";
 
 
 
