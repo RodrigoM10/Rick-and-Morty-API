@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import './character.css';
 
 export default function Character({ character }) {
@@ -21,6 +21,7 @@ export default function Character({ character }) {
                 </Card.Title>
                 <Card.Title ><h4>{location.name}</h4>
                 </Card.Title>
+                <Button>Ver detalle</Button>
           </Card.Body>
     </div>
   );
