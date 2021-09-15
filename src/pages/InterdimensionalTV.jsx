@@ -17,7 +17,7 @@ export default function InterdimensionalTV() {
     const [species, setSpecies] = useState('');
 
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
-    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character&species=${species}`);
+    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}`);
 
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
