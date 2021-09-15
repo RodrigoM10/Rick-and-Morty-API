@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Container } from 'react-bootstrap';
 import Character from '../components/card-character/Character';
+import FilterCharacter from '../components/filter/FilterCharacter';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
 import SelectLocation from '../components/selectLocation/SelectLocation';
@@ -13,8 +14,10 @@ import './characters.css'
 
 export default function InterdimensionalTV() {
     const [characters, setCharacters] = useState([]);
+    const [species, setSpecies] = useState('');
+
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
-    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character`);
+    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character&species=${species}`);
 
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
@@ -39,6 +42,9 @@ export default function InterdimensionalTV() {
     return (
         <>
             <NavRB>
+            <FilterCharacter
+                    setSpecies={setSpecies}
+                />
             </NavRB>
             <Container>
                 <h2>ALL F*CKINGS INTERDIMENSIONAL CABLE STARS </h2>
