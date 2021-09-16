@@ -54,7 +54,7 @@ export default function Mortys() {
                 />
         </NavRB>
         <Container>
-            <h2>ALL MORTYS</h2>
+            <h2 className="title-section">ALL MORTYS</h2>
             <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                 {characters.map((char) => (<Character key={char.id} character={char} />
                 ))}

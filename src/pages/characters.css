@@ -1,3 +1,14 @@
 .offcanvas-filter{
     width: 15vw;
   }
+.title-section{
+  backdrop-filter: blur(10px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+  background-color: #111928b0 !important;
+    color: white !important;
+    border-radius: 0.5rem;
+    margin : 2rem auto;
+    padding: 0.5rem;
+    text-align: center;
+    width: 60%;
+}

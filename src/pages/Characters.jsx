@@ -5,6 +5,7 @@ import FilterCharacter from '../components/filter/FilterCharacter';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
 import SelectLocation from '../components/selectLocation/SelectLocation';
+import { SpinLoader } from '../components/spinner/Spinner';
 import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
 
@@ -44,18 +45,18 @@ export default function Mortys() {
     return (
         <>
             <NavRB>
+                <FilterCharacter
+                    setSpecies={setSpecies}
+                />
                 <SelectLocation
                     location={location}
                     locations={locations}
                     onSelect={handleSelect}
                     isLoading={isLoadingLocations}
                 />
-                <FilterCharacter
-                    setSpecies={setSpecies}
-                />
             </NavRB>
             <Container>
-                <h2>ALL CHARACTERS</h2>
+                <h2 className="title-section ">ALL CHARACTERS</h2>
                 <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                     {characters.map((char) => (<Character key={char.id} character={char} />
                     ))}
@@ -66,6 +67,11 @@ export default function Mortys() {
                             <Card.Title>Sin resultados</Card.Title>
                         </Card>
                     )}
+
+                    {/* <div className="center-spinner">
+                        {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
+                    </div> */}
+
                 </div>
                 <Pagination
                     currentPage={page}
@@ -73,7 +79,6 @@ export default function Mortys() {
                     onSetPage={setPage}
                     isLoading={isLoadingCharacters}
                 />
-
 
                 {/* <PaginationRB setPage={setPage} page={page} info={info}/> */}
             </Container>

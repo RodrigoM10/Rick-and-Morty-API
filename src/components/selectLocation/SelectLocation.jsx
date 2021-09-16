@@ -1,5 +1,6 @@
 import React from 'react';
-import { CloseButton, Form } from 'react-bootstrap';
+import { CloseButton, Form, NavDropdown } from 'react-bootstrap';
+import './selectLocation.css'
 
 export default function SelectLocation({locations, location, isLoading, onSelect}) {
 
@@ -15,9 +16,10 @@ export default function SelectLocation({locations, location, isLoading, onSelect
     
 
     return (
-        <Form className="d-flex align-items-center">
+        <Form className="d-flex align-items-center ms-lg-3 my-2 my-lg-0">
             <div className="d-flex position-relative align-items-center">
                 <Form.Select
+                    className="select-location"
                     placeholder="Localizaciones..."
                     aria-label="Filtro por localización"
                     style={{ width: '12rem' }}
@@ -41,7 +43,6 @@ export default function SelectLocation({locations, location, isLoading, onSelect
                     <SpinLoader isLoading={isLoading} size="md" />
                 </div> */}
             </div>
-
             <CloseButton
                 onClick={clearSelect}
                 className={`ms-2 ${visibleClear}`}
