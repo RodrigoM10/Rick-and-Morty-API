@@ -9,18 +9,10 @@ import Ricks from "./pages/Ricks"
 import Mortys from "./pages/Mortys"
 import InterdimensionalTV from "./pages/InterdimensionalTV"
 
-
 import { Switch, Route } from "react-router-dom";
-import { useState } from "react";
-
+import CharacterDetails from "./components/characterDetails/CharacterDetails";
 
 function App() {
-  const [characters, setCharacters] = useState([]);
-  
-  const [name, setName] = useState('')
-  const [species, setSpecies] = useState('')
-  const [status, setStatus] = useState('')
-  const [id, setId] = useState('')
 
 
   return (
@@ -41,7 +33,11 @@ function App() {
               </Route>
 
               <Route path="/interdimensionalTV">
-                <InterdimensionalTV   name={name} setName={setName} species={species} status={status} />
+                <InterdimensionalTV />
+              </Route>
+
+              <Route path="/character/:charID">
+                <CharacterDetails />
               </Route>
               
           </Switch>

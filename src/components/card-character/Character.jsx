@@ -1,11 +1,10 @@
 import React from 'react';
 import { Button, Card } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import './character.css';
 
 export default function Character({ character }) {
-  const { name, status, species, location, image} = character;
-  // const {name, url} = location;
-
+  const { name, status, species, location, image, id} = character;
 
 
   return (
@@ -21,7 +20,7 @@ export default function Character({ character }) {
                 </Card.Title>
                 <Card.Title ><h4>{location.name}</h4>
                 </Card.Title>
-                <Button>Ver detalle</Button>
+                <Button as={Link} to={`character/${id}`}>Ver detalle</Button>
           </Card.Body>
     </div>
   );

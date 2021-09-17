@@ -1,0 +1,7 @@
+.card-character-full{
+    width: 30rem;
+    margin: 1rem;
+    background: rgb(15, 69, 77);
+    color: white;
+    border: 2px solid black;
+}

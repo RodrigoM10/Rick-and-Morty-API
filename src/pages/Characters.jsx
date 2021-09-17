@@ -16,14 +16,13 @@ import './characters.css'
 export default function Mortys() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
+    const [status, setStatus] = useState('');
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
-    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}`);
+    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}&status=${status}`);
 
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
     const [location, setLocation] = useState('');
-
-
 
     useEffect(() => {
         const limit = 15;
@@ -40,6 +39,8 @@ export default function Mortys() {
     const handleSelect = (value) => {
         setPage(1);
         setLocation(value);
+        setStatus(value);
+        setSpecies(value);
     };
 
     return (
@@ -47,6 +48,8 @@ export default function Mortys() {
             <NavRB>
                 <FilterCharacter
                     setSpecies={setSpecies}
+                    setStatus={setStatus}
+                    onSelect={handleSelect}
                 />
                 <SelectLocation
                     location={location}
@@ -68,9 +71,9 @@ export default function Mortys() {
                         </Card>
                     )}
 
-                    {/* <div className="center-spinner">
+                    <div className="center-spinner">
                         {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
-                    </div> */}
+                    </div>
 
                 </div>
                 <Pagination

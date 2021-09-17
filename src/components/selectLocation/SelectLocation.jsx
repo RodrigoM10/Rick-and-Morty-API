@@ -1,8 +1,11 @@
 import React from 'react';
-import { CloseButton, Form, NavDropdown } from 'react-bootstrap';
+import {
+    CloseButton, Form
+} from 'react-bootstrap';
+import { SpinLoader } from '../spinner/Spinner';
 import './selectLocation.css'
 
-export default function SelectLocation({locations, location, isLoading, onSelect}) {
+export default function SelectLocation({ locations, location, isLoading, onSelect }) {
 
     const handleSelect = (e) => {
         onSelect(e.target.value);
@@ -13,7 +16,7 @@ export default function SelectLocation({locations, location, isLoading, onSelect
     };
 
     const visibleClear = location ? '' : 'invisible';
-    
+
 
     return (
         <Form className="d-flex align-items-center ms-lg-3 my-2 my-lg-0">
@@ -37,11 +40,11 @@ export default function SelectLocation({locations, location, isLoading, onSelect
                     ))}
                 </Form.Select>
 
-                {/* <div
+                <div
                     className="ms-1 position-absolute input-spinner"
                 >
                     <SpinLoader isLoading={isLoading} size="md" />
-                </div> */}
+                </div>
             </div>
             <CloseButton
                 onClick={clearSelect}

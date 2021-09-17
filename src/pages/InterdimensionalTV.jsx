@@ -47,7 +47,7 @@ export default function InterdimensionalTV() {
                 />
             </NavRB>
             <Container>
-                <h2 className="title-section">ALL F*CKINGS INTERDIMENSIONAL CABLE STARS </h2>
+                <h2 className="title-section">ALL THE F*CKINGS INTERDIMENSIONAL CABLE STARS </h2>
                 <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                     {characters.map((char) => (<Character key={char.id} character={char} />
                     ))}
