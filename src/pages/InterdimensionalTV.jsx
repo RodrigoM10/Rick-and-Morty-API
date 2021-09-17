@@ -16,9 +16,11 @@ import './characters.css'
 export default function InterdimensionalTV() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
+    const [status, setStatus] = useState('');
+
 
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
-    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}`);
+    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}&status=${status}`);
 
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
@@ -36,16 +38,19 @@ export default function InterdimensionalTV() {
         setTotalPages(totalPages);
     }, [allCharacters, page, location]);
 
-    // const handleSelect = (value) => {
-    //     setPage(1);
-    //     setLocation(value);
-    // };
+    const handleSelect = (value) => {
+        setPage(1);
+        setStatus(value);
+        setSpecies(value);
+    };
     
     return (
         <>
             <NavRB>
-                <FilterCharacter
+            <FilterCharacter
                     setSpecies={setSpecies}
+                    setStatus={setStatus}
+                    onSelect={handleSelect}
                 />
             </NavRB>
             <Container className="container-pages">

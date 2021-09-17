@@ -16,9 +16,11 @@ import './characters.css'
 export default function Ricks() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
+    const [status, setStatus] = useState('');
+
 
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
-    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=rick&species=${species}`);
+    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=rick&species=${species}&status=${status}`);
 
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
@@ -39,19 +41,23 @@ export default function Ricks() {
     const handleSelect = (value) => {
         setPage(1);
         setLocation(value);
+        setStatus(value);
+        setSpecies(value);
     };
 
     return (
         <>
             <NavRB>
+            <FilterCharacter
+                    setSpecies={setSpecies}
+                    setStatus={setStatus}
+                    onSelect={handleSelect}
+                />
                 <SelectLocation
                     location={location}
                     locations={locations}
                     onSelect={handleSelect}
                     isLoading={isLoadingLocations}
-                />
-                <FilterCharacter
-                    setSpecies={setSpecies}
                 />
             </NavRB>
             <Container>

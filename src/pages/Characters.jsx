@@ -17,6 +17,7 @@ export default function Mortys() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
     const [status, setStatus] = useState('');
+    
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
     const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}&status=${status}`);
 
