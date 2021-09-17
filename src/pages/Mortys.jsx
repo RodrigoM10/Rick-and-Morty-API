@@ -5,6 +5,7 @@ import FilterCharacter from '../components/filter/FilterCharacter';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
 import SelectLocation from '../components/selectLocation/SelectLocation';
+import { SpinLoader } from '../components/spinner/Spinner';
 import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
 
@@ -42,37 +43,42 @@ export default function Mortys() {
 
     return (
         <>
-        <NavRB>
-            <SelectLocation
-                location={location}
-                locations={locations}
-                onSelect={handleSelect}
-                isLoading={isLoadingLocations}
-            />
-            <FilterCharacter
+            <NavRB>
+                <SelectLocation
+                    location={location}
+                    locations={locations}
+                    onSelect={handleSelect}
+                    isLoading={isLoadingLocations}
+                />
+                <FilterCharacter
                     setSpecies={setSpecies}
                 />
-        </NavRB>
-        <Container>
-            <h2 className="title-section">ALL MORTYS</h2>
-            <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
-                {characters.map((char) => (<Character key={char.id} character={char} />
-                ))}
+            </NavRB>
+            <Container>
+                <h2 className="title-section">ALL MORTYS</h2>
+                <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
+                    {characters.map((char) => (<Character key={char.id} character={char} />
+                    ))}
 
-                {/* No results message ↓ */}
-                {!characters.length && !isLoadingCharacters && (
-                    <Card className="glass-card text-white-50 p-5 mt-5">
-                        <Card.Title>Sin resultados</Card.Title>
-                    </Card>
-                )}
-            </div>
-            <Pagination
-                currentPage={page}
-                totalPages={totalPages}
-                onSetPage={setPage}
-                isLoading={isLoadingCharacters}
-            />
-            {/* <PaginationRB setPage={setPage} page={page} info={info}/> */}
+                    {/* No results message ↓ */}
+                    {!characters.length && !isLoadingCharacters && (
+                        <Card className="glass-card text-white-50 p-5 mt-5">
+                            <Card.Title>Sin resultados</Card.Title>
+                        </Card>
+                    )}
+
+                    <div className="position-fixed center-spinner">
+                        {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
+                    </div>
+
+                </div>
+                <Pagination
+                    currentPage={page}
+                    totalPages={totalPages}
+                    onSetPage={setPage}
+                    isLoading={isLoadingCharacters}
+                />
+                {/* <PaginationRB setPage={setPage} page={page} info={info}/> */}
             </Container>
         </>
     );

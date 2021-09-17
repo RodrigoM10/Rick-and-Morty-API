@@ -68,7 +68,7 @@ export default function Pagination({ currentPage = 1, totalPages = 0, onSetPage,
             {prevNext(currentPage + 1)}
           </ul>
         </nav>
-        {/* <div style={{ left: '100%' }} className="ms-1 position-absolute">
+        {/* <div style={{ left: '100%' }} className="ms-1 position-fixed">
           <SpinLoader isLoading={isLoading} size="sm" />
         </div> */}
       </div>

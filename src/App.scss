@@ -14,8 +14,13 @@
   width: 100%;
   background-size: contain !important;
 }
-
-/* Spinner */
-/* .center-spinner {
-
-} */
+// Spinner
+.center-spinner {
+  top: 50vh;
+  left: 46.5%;
+}
+.input-spinner {
+  right: 13px;
+  background-color: rgba(241, 241, 241, 0.733);
+  opacity: 85%;
+}

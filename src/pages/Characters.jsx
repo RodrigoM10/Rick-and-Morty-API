@@ -71,7 +71,7 @@ export default function Mortys() {
                         </Card>
                     )}
 
-                    <div className="center-spinner">
+                    <div className="position-fixed center-spinner">
                         {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
                     </div>
 

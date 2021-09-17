@@ -5,6 +5,7 @@ import FilterCharacter from '../components/filter/FilterCharacter';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
 import SelectLocation from '../components/selectLocation/SelectLocation';
+import { SpinLoader } from '../components/spinner/Spinner';
 import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
 
@@ -21,7 +22,7 @@ export default function InterdimensionalTV() {
 
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
-    const [location, setLocation] = useState('Interdimensional Cable');    
+    const [location, setLocation] = useState('Interdimensional Cable');
 
     useEffect(() => {
         const limit = 15;
@@ -39,14 +40,15 @@ export default function InterdimensionalTV() {
     //     setPage(1);
     //     setLocation(value);
     // };
+    
     return (
         <>
             <NavRB>
-            <FilterCharacter
+                <FilterCharacter
                     setSpecies={setSpecies}
                 />
             </NavRB>
-            <Container>
+            <Container className="container-pages">
                 <h2 className="title-section">ALL THE F*CKINGS INTERDIMENSIONAL CABLE STARS </h2>
                 <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                     {characters.map((char) => (<Character key={char.id} character={char} />
@@ -58,6 +60,11 @@ export default function InterdimensionalTV() {
                             <Card.Title>Sin resultados</Card.Title>
                         </Card>
                     )}
+
+                    <div className="position-fixed center-spinner">
+                        {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
+                    </div>
+
                 </div>
                 <Pagination
                     currentPage={page}

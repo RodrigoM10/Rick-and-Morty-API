@@ -1,6 +1,3 @@
-.offcanvas-filter{
-    width: 15vw;
-  }
 .title-section{
   backdrop-filter: blur(10px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(180%) !important;

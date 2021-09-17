@@ -41,7 +41,7 @@ export default function SelectLocation({ locations, location, isLoading, onSelec
                 </Form.Select>
 
                 <div
-                    className="ms-1 position-absolute input-spinner"
+                    className="ms-1 position-fixed input-spinner"
                 >
                     <SpinLoader isLoading={isLoading} size="md" />
                 </div>
