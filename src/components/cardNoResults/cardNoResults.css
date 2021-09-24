@@ -13,7 +13,7 @@
     width: 10px;
     height: 10px;
     left: -5px;
-    bottom: 70px;
+    top: 70px;
     background-color: white;
     right: 50%; /*o lo que consideres*/
     bottom: (Ancho) / 2; /*O la mitad del ancho*/

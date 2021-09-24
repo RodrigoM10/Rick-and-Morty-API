@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Container } from 'react-bootstrap';
 import Character from '../components/card-character/Character';
-import FilterCharacter from '../components/filter/FilterCharacter';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
 import SelectSpecies from '../components/filterNavbar/SelectSpecies';
@@ -9,6 +8,7 @@ import SelectStatus from '../components/filterNavbar/SelectStatus';
 import { SpinLoader } from '../components/spinner/Spinner';
 import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
+import { CardNoResults } from '../components/cardNoResults/CardNoResults';
 
 // import PaginationRB from '../components/pagination/Pagination';
 
@@ -74,9 +74,7 @@ export default function InterdimensionalTV() {
 
                     {/* No results message ↓ */}
                     {!characters.length && !isLoadingCharacters && (
-                        <Card className="glass-card text-white-50 p-5 mt-5">
-                            <Card.Title>Sin resultados</Card.Title>
-                        </Card>
+                        <CardNoResults />
                     )}
 
                     <div className="position-fixed center-spinner">
