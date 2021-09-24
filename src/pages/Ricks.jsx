@@ -21,6 +21,7 @@ export default function Ricks() {
     const [status, setStatus] = useState('');
 
 
+
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
     const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=rick&species=${species}&status=${status}`);
 

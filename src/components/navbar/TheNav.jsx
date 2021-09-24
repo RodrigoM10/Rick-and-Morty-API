@@ -2,12 +2,7 @@ import { Navbar, Nav, Form, FormControl} from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './theNav.css'
 
-export const NavRB = ({ setName, children}) => {
-
-    const handleChange = (event) => {
-        const { value } = event.target;
-        setName(value);
-    };
+export const NavRB = ({ setName, name, children}) => {
 
     return (
         <Navbar className="navbar sticky-top py-1 px-3 " bg="dark" variant="dark" expand="lg">
@@ -25,16 +20,7 @@ export const NavRB = ({ setName, children}) => {
                     {/* select / filter  */}
                     {children}
                 </Nav>
-                <Form className="d-flex">
-                    <FormControl
-                        name="searchName"
-                        onChange={(e) => handleChange(e)}
-                        type="search"
-                        placeholder="Search"
-                        className="mr-2"
-                        aria-label="Search"
-                    />
-                </Form>
+            
             </Navbar.Collapse>
         </Navbar>
     )

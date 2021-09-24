@@ -13,14 +13,16 @@ import { useFetchAll } from '../hooks/useFetch';
 // import PaginationRB from '../components/pagination/Pagination';
 
 import './characters.css'
+import InputName from '../components/filterNavbar/InputName';
 
 export default function Mortys() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
     const [status, setStatus] = useState('');
+    const [name, setName] = useState('');
 
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
-    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}&status=${status}`);
+    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=${name}&species=${species}&status=${status}`);
 
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
@@ -54,7 +56,10 @@ export default function Mortys() {
 
     return (
         <>
-            <NavRB>
+            <NavRB 
+            setName={setName}
+            name={name}
+            >
                 <SelectStatus
                     setStatus={setStatus}
                     status = {status}
@@ -71,6 +76,9 @@ export default function Mortys() {
                     locations={locations}
                     onSelect={clearFilterLocations}
                     isLoading={isLoadingLocations}
+                />
+                <InputName 
+                setName={setName}
                 />
             </NavRB>
             <Container>
