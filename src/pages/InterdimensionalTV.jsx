@@ -19,7 +19,7 @@ export default function InterdimensionalTV() {
     const [status, setStatus] = useState('');
 
 
-    const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
+    // const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
     const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}&status=${status}`);
 
     const [totalPages, setTotalPages] = useState(0);
@@ -36,7 +36,7 @@ export default function InterdimensionalTV() {
         setCharacters(charactersSlice);
         const totalPages = Math.ceil(charactersFiltered.length / limit);
         setTotalPages(totalPages);
-    }, [allCharacters, page, location]);
+    }, [allCharacters, page, location]); 
 
     const handleSelect = (value) => {
         setPage(1);
@@ -44,6 +44,9 @@ export default function InterdimensionalTV() {
         setSpecies(value);
     };
     
+    //logica para resultados
+    console.log('IS LOADING CHARACTERS', isLoadingCharacters ? 'loading' : 'loaded');
+    console.log('characters.length : ', characters.length ?  'Hay Resultados': 'no hay reusltados');
     return (
         <>
             <NavRB>
@@ -77,8 +80,6 @@ export default function InterdimensionalTV() {
                     onSetPage={setPage}
                     isLoading={isLoadingCharacters}
                 />
-
-
                 {/* <PaginationRB setPage={setPage} page={page} info={info}/> */}
             </Container>
         </>

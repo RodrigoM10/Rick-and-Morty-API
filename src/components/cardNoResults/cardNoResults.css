@@ -1,0 +1,26 @@
+.balloon {
+    border-radius: 2rem;
+    padding: 0.5rem;
+    z-index: 1;
+    background-color: whitesmoke;
+    color: black;
+    filter: drop-shadow(0px 0px 1px black) ;
+}
+.balloon::before {
+    content: ''; /* propiedad necesaria */
+    position: absolute; 
+    z-index: -1;
+    width: 10px;
+    height: 10px;
+    left: -5px;
+    bottom: 70px;
+    background-color: white;
+    right: 50%; /*o lo que consideres*/
+    bottom: (Ancho) / 2; /*O la mitad del ancho*/
+    transform: skew(45deg);
+}
+
+.poopy-img {
+    width: 70%;
+    cursor: pointer;
+  }

@@ -17,29 +17,32 @@ export default function Mortys() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
     const [status, setStatus] = useState('');
-    
+
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
     const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}&status=${status}`);
-
+    
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
     const [location, setLocation] = useState('');
-
+    
     useEffect(() => {
         const limit = 15;
         const start = 0 + page * limit - limit;
         const end = start + limit;
-
+        
         const charactersFiltered = allCharacters.filter((char) => !location || char.location.name === location);
         const charactersSlice = charactersFiltered.slice(start, end);
         setCharacters(charactersSlice);
         const totalPages = Math.ceil(charactersFiltered.length / limit);
         setTotalPages(totalPages);
     }, [allCharacters, page, location, species]);
-
+    
     const handleSelect = (value) => {
         setPage(1);
         setLocation(value);
+    };
+    const handleSelectFilter = (value) => {
+        setPage(1);
         setStatus(value);
         setSpecies(value);
     };
@@ -50,7 +53,7 @@ export default function Mortys() {
                 <FilterCharacter
                     setSpecies={setSpecies}
                     setStatus={setStatus}
-                    onSelect={handleSelect}
+                    onSelect={handleSelectFilter}
                 />
                 <SelectLocation
                     location={location}
@@ -75,7 +78,7 @@ export default function Mortys() {
                     <div className="position-fixed center-spinner">
                         {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
                     </div>
-
+                    
                 </div>
                 <Pagination
                     currentPage={page}

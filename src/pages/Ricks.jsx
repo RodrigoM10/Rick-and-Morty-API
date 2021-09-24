@@ -41,6 +41,9 @@ export default function Ricks() {
     const handleSelect = (value) => {
         setPage(1);
         setLocation(value);
+    };
+    const handleSelectFilter = (value) => {
+        setPage(1);
         setStatus(value);
         setSpecies(value);
     };
@@ -51,7 +54,7 @@ export default function Ricks() {
             <FilterCharacter
                     setSpecies={setSpecies}
                     setStatus={setStatus}
-                    onSelect={handleSelect}
+                    onSelect={handleSelectFilter}
                 />
                 <SelectLocation
                     location={location}

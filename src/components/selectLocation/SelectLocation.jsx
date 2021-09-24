@@ -2,7 +2,6 @@ import React from 'react';
 import {
     CloseButton, Form
 } from 'react-bootstrap';
-import { SpinLoader } from '../spinner/Spinner';
 import './selectLocation.css'
 
 export default function SelectLocation({ locations, location, isLoading, onSelect }) {
@@ -39,12 +38,6 @@ export default function SelectLocation({ locations, location, isLoading, onSelec
                         <option key={loc.id}>{loc.name}</option>
                     ))}
                 </Form.Select>
-
-                <div
-                    className="ms-1 position-fixed input-spinner"
-                >
-                    <SpinLoader isLoading={isLoading} size="md" />
-                </div>
             </div>
             <CloseButton
                 onClick={clearSelect}
