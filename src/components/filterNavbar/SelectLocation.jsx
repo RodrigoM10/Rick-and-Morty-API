@@ -2,7 +2,7 @@ import React from 'react';
 import {
     CloseButton, Form
 } from 'react-bootstrap';
-import './selectLocation.css'
+
 
 export default function SelectLocation({ locations, location, isLoading, onSelect }) {
 
@@ -21,12 +21,12 @@ export default function SelectLocation({ locations, location, isLoading, onSelec
         <Form className="d-flex align-items-center ms-lg-3 my-2 my-lg-0">
             <div className="d-flex position-relative align-items-center">
                 <Form.Select
-                    className="select-location"
-                    placeholder="Localizaciones..."
-                    aria-label="Filtro por localización"
-                    style={{ width: '12rem' }}
+                
+                    // className="select-filter"
+                    placeholder="Locations"
+                    aria-label="filter locations"
+                    style={{ width: '10rem' }}
                     onChange={handleSelect}
-                    disabled={isLoading}
                     value={location}
                 >
                     <option value="" disabled>

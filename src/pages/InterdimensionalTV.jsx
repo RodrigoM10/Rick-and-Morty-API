@@ -4,7 +4,8 @@ import Character from '../components/card-character/Character';
 import FilterCharacter from '../components/filter/FilterCharacter';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
-import SelectLocation from '../components/selectLocation/SelectLocation';
+import SelectSpecies from '../components/filterNavbar/SelectSpecies';
+import SelectStatus from '../components/filterNavbar/SelectStatus';
 import { SpinLoader } from '../components/spinner/Spinner';
 import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
@@ -38,9 +39,12 @@ export default function InterdimensionalTV() {
         setTotalPages(totalPages);
     }, [allCharacters, page, location]); 
 
-    const handleSelect = (value) => {
+    const clearFilterStatus = (value) => {
         setPage(1);
         setStatus(value);
+    };
+    const clearFilterSpecies = (value) => {
+        setPage(1);
         setSpecies(value);
     };
     
@@ -50,10 +54,16 @@ export default function InterdimensionalTV() {
     return (
         <>
             <NavRB>
-            <FilterCharacter
-                    setSpecies={setSpecies}
+            <SelectStatus
                     setStatus={setStatus}
-                    onSelect={handleSelect}
+                    status = {status}
+                    onSelect={clearFilterStatus}
+
+                />
+                <SelectSpecies
+                    setSpecies={setSpecies}
+                    species = {species}
+                    onSelect={clearFilterSpecies}
                 />
             </NavRB>
             <Container className="container-pages">

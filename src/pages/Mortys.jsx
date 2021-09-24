@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react';
 import { Card, Container } from 'react-bootstrap';
 import Character from '../components/card-character/Character';
 import { CardNoResults } from '../components/cardNoResults/CardNoResults';
-import FilterCharacter from '../components/filter/FilterCharacter';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
-import SelectLocation from '../components/selectLocation/SelectLocation';
+import SelectLocation from '../components/filterNavbar/SelectLocation';
+import SelectStatus from '../components/filterNavbar/SelectStatus';
+import SelectSpecies from '../components/filterNavbar/SelectSpecies';
 import { SpinLoader } from '../components/spinner/Spinner';
 import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
 
 // import PaginationRB from '../components/pagination/Pagination';
-
 import './characters.css'
+
 
 export default function Mortys() {
     const [characters, setCharacters] = useState([]);
@@ -44,14 +45,17 @@ export default function Mortys() {
     }, [allCharacters, page, location]);
 
 
-    const handleSelect = (value) => {
-        setPage(1);
-        setLocation(value);
-    };
-    const handleSelectFilter = (value) => {
+    const clearFilterStatus = (value) => {
         setPage(1);
         setStatus(value);
+    };
+    const clearFilterSpecies = (value) => {
+        setPage(1);
         setSpecies(value);
+    };
+    const clearFilterLocations = (value) => {
+        setPage(1);
+        setLocation(value);
     };
 
     //logica para resultados
@@ -68,15 +72,21 @@ export default function Mortys() {
     return (
         <>
             <NavRB>
-                <FilterCharacter
-                    setSpecies={setSpecies}
+            <SelectStatus
                     setStatus={setStatus}
-                    onSelect={handleSelectFilter}
+                    status = {status}
+                    onSelect={clearFilterStatus}
+
+                />
+                <SelectSpecies
+                    setSpecies={setSpecies}
+                    species = {species}
+                    onSelect={clearFilterSpecies}
                 />
                 <SelectLocation
                     location={location}
                     locations={locations}
-                    onSelect={handleSelect}
+                    onSelect={clearFilterLocations}
                     isLoading={isLoadingLocations}
                 />
             </NavRB>

@@ -4,7 +4,9 @@ import Character from '../components/card-character/Character';
 import FilterCharacter from '../components/filter/FilterCharacter';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
-import SelectLocation from '../components/selectLocation/SelectLocation';
+import SelectLocation from '../components/filterNavbar/SelectLocation';
+import SelectSpecies from '../components/filterNavbar/SelectSpecies';
+import SelectStatus from '../components/filterNavbar/SelectStatus';
 import { SpinLoader } from '../components/spinner/Spinner';
 import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
@@ -38,28 +40,37 @@ export default function Ricks() {
         setTotalPages(totalPages);
     }, [allCharacters, page, location]);
 
-    const handleSelect = (value) => {
-        setPage(1);
-        setLocation(value);
-    };
-    const handleSelectFilter = (value) => {
+    const clearFilterStatus = (value) => {
         setPage(1);
         setStatus(value);
+    };
+    const clearFilterSpecies = (value) => {
+        setPage(1);
         setSpecies(value);
+    };
+    const clearFilterLocations = (value) => {
+        setPage(1);
+        setLocation(value);
     };
 
     return (
         <>
             <NavRB>
-            <FilterCharacter
-                    setSpecies={setSpecies}
+             <SelectStatus
                     setStatus={setStatus}
-                    onSelect={handleSelectFilter}
+                    status = {status}
+                    onSelect={clearFilterStatus}
+
+                />
+                <SelectSpecies
+                    setSpecies={setSpecies}
+                    species = {species}
+                    onSelect={clearFilterSpecies}
                 />
                 <SelectLocation
                     location={location}
                     locations={locations}
-                    onSelect={handleSelect}
+                    onSelect={clearFilterLocations}
                     isLoading={isLoadingLocations}
                 />
             </NavRB>
