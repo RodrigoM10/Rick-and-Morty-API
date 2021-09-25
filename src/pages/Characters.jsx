@@ -15,7 +15,7 @@ import { useFetchAll } from '../hooks/useFetch';
 import './characters.css'
 import InputName from '../components/filterNavbar/InputName';
 
-export default function Mortys() {
+export default function Characters() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
     const [status, setStatus] = useState('');
