@@ -14,8 +14,9 @@ import { useFetchAll } from '../hooks/useFetch';
 
 import './characters.css'
 import InputName from '../components/filterNavbar/InputName';
+import  SideBar  from '../components/sideBar/SideBar';
 
-export default function Mortys() {
+export default function Characters() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
     const [status, setStatus] = useState('');
@@ -52,6 +53,35 @@ export default function Mortys() {
         setPage(1);
         setLocation(value);
     };
+
+
+    // sidebar
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       sidebarDocked: mql.matches,
+    //       sidebarOpen: false
+    //     };
+     
+    //     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
+    //     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+    //   }
+     
+    //   componentWillMount() {
+    //     mql.addListener(this.mediaQueryChanged);
+    //   }
+     
+    //   componentWillUnmount() {
+    //     this.state.mql.removeListener(this.mediaQueryChanged);
+    //   }
+     
+    //   onSetSidebarOpen(open) {
+    //     this.setState({ sidebarOpen: open });
+    //   }
+     
+    //   mediaQueryChanged() {
+    //     this.setState({ sidebarDocked: mql.matches, sidebarOpen: false });
+    //   }
     
 
     return (
@@ -81,6 +111,12 @@ export default function Mortys() {
                 setName={setName}
                 />
             </NavRB>
+            <SideBar 
+               sidebar={<b>Sidebar content</b>}
+               open={this.state.sidebarOpen}
+               docked={this.state.sidebarDocked}
+               onSetOpen={this.onSetSidebarOpen}
+            />
             <Container>
                 <h2 className="title-section ">ALL CHARACTERS</h2>
                 <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">

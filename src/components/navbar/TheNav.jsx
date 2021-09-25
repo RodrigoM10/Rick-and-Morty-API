@@ -16,7 +16,6 @@ export const NavRB = ({ setName, name, children}) => {
                     <Nav.Link as={NavLink} to="/ricks" exact activeClassName="text-white" >All Ricks</Nav.Link>
                     <Nav.Link as={NavLink} to="/mortys" exact activeClassName="text-white" >All Mortys</Nav.Link>
                     <Nav.Link as={NavLink} to="/interdimensionalTV"  exact activeClassName="text-white">Interdimensional Cable Stars</Nav.Link>
-
                     {/* select / filter  */}
                     {children}
                 </Nav>
