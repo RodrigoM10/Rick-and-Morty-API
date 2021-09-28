@@ -4,7 +4,7 @@ import {
 } from 'react-bootstrap';
 
 
-export default function SelectLocation({ locations, location, isLoading, onSelect }) {
+export default function SelectLocation({ locations, location, onSelect }) {
 
     const handleSelect = (e) => {
         onSelect(e.target.value);

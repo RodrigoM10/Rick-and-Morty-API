@@ -14,6 +14,7 @@ import { useFetchAll } from '../hooks/useFetch';
 
 import './characters.css'
 import InputName from '../components/filterNavbar/InputName';
+import SideBar from '../components/sideBar/SideBar';
 
 export default function Characters() {
     const [characters, setCharacters] = useState([]);
@@ -52,37 +53,32 @@ export default function Characters() {
         setPage(1);
         setLocation(value);
     };
-    
+
 
     return (
         <>
-            <NavRB 
-            setName={setName}
-            name={name}
-            >
-                <SelectStatus
-                    setStatus={setStatus}
-                    status = {status}
-                    onSelect={clearFilterStatus}
+            <SideBar
+                setStatus={setStatus}
+                status={status}
+                onSelectStatus={clearFilterStatus}
 
-                />
-                <SelectSpecies
-                    setSpecies={setSpecies}
-                    species = {species}
-                    onSelect={clearFilterSpecies}
-                />
-                <SelectLocation
-                    location={location}
-                    locations={locations}
-                    onSelect={clearFilterLocations}
-                    isLoading={isLoadingLocations}
-                />
-                <InputName 
-                setName={setName}
+                setSpecies={setSpecies}
+                species={species}
+                onSelectSpecies={clearFilterSpecies}
+
+                location={location}
+                locations={locations}
+                onSelectLocations={clearFilterLocations}
+                isLoading={isLoadingLocations}
+            />
+            <NavRB>
+                <InputName
+                    setName={setName}
+                    name={name}
                 />
             </NavRB>
             <Container>
-                <h2 className="title-section ">ALL CHARACTERS</h2>
+                <h2 className="title-section ">Rick and Morty</h2>
                 <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                     {characters.map((char) => (<Character key={char.id} character={char} />
                     ))}
