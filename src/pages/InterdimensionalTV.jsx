@@ -13,6 +13,7 @@ import { CardNoResults } from '../components/cardNoResults/CardNoResults';
 // import PaginationRB from '../components/pagination/Pagination';
 
 import './characters.css'
+import SideBar from '../components/sideBar/SideBar';
 
 export default function InterdimensionalTV() {
     const [characters, setCharacters] = useState([]);
@@ -20,7 +21,7 @@ export default function InterdimensionalTV() {
     const [status, setStatus] = useState('');
 
 
-    // const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
+    const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
     const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}&status=${status}`);
 
     const [totalPages, setTotalPages] = useState(0);
@@ -37,7 +38,7 @@ export default function InterdimensionalTV() {
         setCharacters(charactersSlice);
         const totalPages = Math.ceil(charactersFiltered.length / limit);
         setTotalPages(totalPages);
-    }, [allCharacters, page, location]); 
+    }, [allCharacters, page, location]);
 
     const clearFilterStatus = (value) => {
         setPage(1);
@@ -47,25 +48,34 @@ export default function InterdimensionalTV() {
         setPage(1);
         setSpecies(value);
     };
-    
+
+    const clearFilterLocations = (value) => {
+        setPage(1);
+        setLocation(value);
+    };
+
     //logica para resultados
     console.log('IS LOADING CHARACTERS', isLoadingCharacters ? 'loading' : 'loaded');
-    console.log('characters.length : ', characters.length ?  'Hay Resultados': 'no hay reusltados');
+    console.log('characters.length : ', characters.length ? 'Hay Resultados' : 'no hay reusltados');
+    console.log('interdimensionaltv :', location)
     return (
         <>
-            <NavRB>
-            <SelectStatus
-                    setStatus={setStatus}
-                    status = {status}
-                    onSelect={clearFilterStatus}
-
-                />
-                <SelectSpecies
-                    setSpecies={setSpecies}
-                    species = {species}
-                    onSelect={clearFilterSpecies}
-                />
-            </NavRB>
+              <SideBar
+                setStatus={setStatus}
+                status={status}
+                onSelectStatus={clearFilterStatus}
+                //   
+                setSpecies={setSpecies}
+                species={species}
+                onSelectSpecies={clearFilterSpecies}
+                // 
+                location={location}
+                locations={locations}
+                onSelectLocations={clearFilterLocations}
+                isLoading={isLoadingLocations}
+            >
+            </SideBar>
+            <NavRB />
             <Container className="container-pages">
                 <h2 className="title-section">ALL THE F*CKINGS INTERDIMENSIONAL CABLE STARS </h2>
                 <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">

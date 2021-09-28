@@ -1,14 +1,26 @@
 .navbar {
   justify-content: end !important;
-    backdrop-filter: blur(10px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
-    background-color: #111928b0 !important;
+  backdrop-filter: blur(10px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
+  background-color: #111928b0 !important;
   color: white !important;
 z-index: 0;
+}
+.navbar .nav-link {
+  color: rgb(177, 172, 172);
 }
 .navbar-logo {
   display: inline-block;
   align-items: top;
   width: 50px;
   margin: 0;
+}
+.icon-search {
+  background-color: rgb(44, 163, 179);
+  color: rgb(243, 243, 243);
+  border-radius: 3px;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

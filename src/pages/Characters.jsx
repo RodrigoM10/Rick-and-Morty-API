@@ -58,28 +58,28 @@ export default function Characters() {
 
     return (
         <>
-        <SideBar
+            <SideBar
                 setStatus={setStatus}
                 status={status}
                 onSelectStatus={clearFilterStatus}
-                //   
+
                 setSpecies={setSpecies}
                 species={species}
                 onSelectSpecies={clearFilterSpecies}
-                // 
+
                 location={location}
                 locations={locations}
                 onSelectLocations={clearFilterLocations}
                 isLoading={isLoadingLocations}
-            >
-                 <InputName 
-                setName={setName}
-                name={name}
+            />
+            <NavRB>
+                <InputName
+                    setName={setName}
+                    name={name}
                 />
-            </SideBar>
-            <NavRB />
+            </NavRB>
             <Container>
-                <h2 className="title-section ">ALL CHARACTERS</h2>
+                <h2 className="title-section ">Rick and Morty</h2>
                 <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
                     {characters.map((char) => (<Character key={char.id} character={char} />
                     ))}
