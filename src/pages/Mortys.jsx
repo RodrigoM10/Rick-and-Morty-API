@@ -13,13 +13,14 @@ import { useFetchAll } from '../hooks/useFetch';
 
 // import PaginationRB from '../components/pagination/Pagination';
 import './characters.css'
+import SideBar from '../components/sideBar/SideBar';
+import InputName from '../components/filterNavbar/InputName';
 
 
 export default function Mortys() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
     const [status, setStatus] = useState('');
-    
 
 
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
@@ -72,63 +73,62 @@ export default function Mortys() {
 
     return (
         <>
-            <NavRB>
-            <SelectStatus
-                    setStatus={setStatus}
-                    status = {status}
-                    onSelect={clearFilterStatus}
+            <SideBar
+                setStatus={setStatus}
+                status={status}
+                onSelectStatus={clearFilterStatus}
+                //   
+                setSpecies={setSpecies}
+                species={species}
+                onSelectSpecies={clearFilterSpecies}
+                // 
+                location={location}
+                locations={locations}
+                onSelectLocations={clearFilterLocations}
+                isLoading={isLoadingLocations}
+            >
+            </SideBar>
+            <NavRB />
+            <div className="d-flex ">
+                <Container>
+                    <h2 className="title-section">ALL MORTYS</h2>
+                    <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
+                        {
+                            (!isLoadingCharacters && characters.length)
+                            &&
+                            (characters.map((char) => (<Character key={char.id} character={char} />)))
+                        }
 
-                />
-                <SelectSpecies
-                    setSpecies={setSpecies}
-                    species = {species}
-                    onSelect={clearFilterSpecies}
-                />
-                <SelectLocation
-                    location={location}
-                    locations={locations}
-                    onSelect={clearFilterLocations}
-                    isLoading={isLoadingLocations}
-                />
-            </NavRB>
-            <Container>
-                <h2 className="title-section">ALL MORTYS</h2>
-                <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
-                    {
-                    (!isLoadingCharacters && characters.length )
-                        &&
-                    (characters.map((char) => (<Character key={char.id} character={char} />)))
-                    }
+                        {/* No results message ↓ */}
+                        {(!characters.length && !isLoadingCharacters) && (
+                            <Card className="glass-card text-center text-white-50 p-5 mt-5">
+                                <Card.Title>No results</Card.Title>
+                            </Card>
+                        )}
+                        {/* No results message ↓ */}
+                        {(isLoadingCharacters && characters.length && charactersFoundByFilter.length) && (
+                            <CardNoResults />
 
-                    {/* No results message ↓ */}
-                    {(!characters.length && !isLoadingCharacters) && (
-                        <Card className="glass-card text-center text-white-50 p-5 mt-5">
-                        <Card.Title>No results</Card.Title>
-                    </Card>
-                    )}
-                         {/* No results message ↓ */}
-                         {(isLoadingCharacters && characters.length && charactersFoundByFilter.length) && (
-                    <CardNoResults />
-                     
-                    )}
+                        )}
 
-                    {
-                    (isLoadingCharacters &&  !charactersFoundByFilter.length) 
-                          &&
-                    <div className="position-fixed center-spinner">
-                         {<SpinLoader size="lg" />}
+                        {
+                            (isLoadingCharacters && !charactersFoundByFilter.length)
+                            &&
+                            <div className="position-fixed center-spinner">
+                                {<SpinLoader size="lg" />}
+                            </div>
+                        }
+
                     </div>
-                    }
-
-                </div>
-                <Pagination
-                    currentPage={page}
-                    totalPages={totalPages}
-                    onSetPage={setPage}
-                    isLoading={isLoadingCharacters}
-                />
-                {/* <PaginationRB setPage={setPage} page={page} info={info}/> */}
-            </Container>
+                    <Pagination
+                        currentPage={page}
+                        totalPages={totalPages}
+                        onSetPage={setPage}
+                        isLoading={isLoadingCharacters}
+                    />
+                    {/* <PaginationRB setPage={setPage} page={page} info={info}/> */}
+                </Container>
+            </div>
         </>
     );
 };

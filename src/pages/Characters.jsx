@@ -14,7 +14,8 @@ import { useFetchAll } from '../hooks/useFetch';
 
 import './characters.css'
 import InputName from '../components/filterNavbar/InputName';
-import  SideBar  from '../components/sideBar/SideBar';
+import SideBar from '../components/sideBar/SideBar';
+
 
 export default function Characters() {
     const [characters, setCharacters] = useState([]);
@@ -55,68 +56,28 @@ export default function Characters() {
     };
 
 
-    // sidebar
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //       sidebarDocked: mql.matches,
-    //       sidebarOpen: false
-    //     };
-     
-    //     this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
-    //     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
-    //   }
-     
-    //   componentWillMount() {
-    //     mql.addListener(this.mediaQueryChanged);
-    //   }
-     
-    //   componentWillUnmount() {
-    //     this.state.mql.removeListener(this.mediaQueryChanged);
-    //   }
-     
-    //   onSetSidebarOpen(open) {
-    //     this.setState({ sidebarOpen: open });
-    //   }
-     
-    //   mediaQueryChanged() {
-    //     this.setState({ sidebarDocked: mql.matches, sidebarOpen: false });
-    //   }
-    
-
     return (
         <>
-            <NavRB 
-            setName={setName}
-            name={name}
+        <SideBar
+                setStatus={setStatus}
+                status={status}
+                onSelectStatus={clearFilterStatus}
+                //   
+                setSpecies={setSpecies}
+                species={species}
+                onSelectSpecies={clearFilterSpecies}
+                // 
+                location={location}
+                locations={locations}
+                onSelectLocations={clearFilterLocations}
+                isLoading={isLoadingLocations}
             >
-                <SelectStatus
-                    setStatus={setStatus}
-                    status = {status}
-                    onSelect={clearFilterStatus}
-
-                />
-                <SelectSpecies
-                    setSpecies={setSpecies}
-                    species = {species}
-                    onSelect={clearFilterSpecies}
-                />
-                <SelectLocation
-                    location={location}
-                    locations={locations}
-                    onSelect={clearFilterLocations}
-                    isLoading={isLoadingLocations}
-                />
-                <InputName 
+                 <InputName 
                 setName={setName}
+                name={name}
                 />
-            </NavRB>
-            <SideBar 
-               sidebar={<b>Sidebar content</b>}
-               open={this.state.sidebarOpen}
-               docked={this.state.sidebarDocked}
-               onSetOpen={this.onSetSidebarOpen}
-            />
+            </SideBar>
+            <NavRB />
             <Container>
                 <h2 className="title-section ">ALL CHARACTERS</h2>
                 <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">

@@ -14,6 +14,7 @@ import { useFetchAll } from '../hooks/useFetch';
 // import PaginationRB from '../components/pagination/Pagination';
 
 import './characters.css'
+import SideBar from '../components/sideBar/SideBar';
 
 export default function Ricks() {
     const [characters, setCharacters] = useState([]);
@@ -56,25 +57,22 @@ export default function Ricks() {
 
     return (
         <>
-            <NavRB>
-             <SelectStatus
-                    setStatus={setStatus}
-                    status = {status}
-                    onSelect={clearFilterStatus}
-
-                />
-                <SelectSpecies
-                    setSpecies={setSpecies}
-                    species = {species}
-                    onSelect={clearFilterSpecies}
-                />
-                <SelectLocation
-                    location={location}
-                    locations={locations}
-                    onSelect={clearFilterLocations}
-                    isLoading={isLoadingLocations}
-                />
-            </NavRB>
+            <SideBar
+                setStatus={setStatus}
+                status={status}
+                onSelectStatus={clearFilterStatus}
+                //   
+                setSpecies={setSpecies}
+                species={species}
+                onSelectSpecies={clearFilterSpecies}
+                // 
+                location={location}
+                locations={locations}
+                onSelectLocations={clearFilterLocations}
+                isLoading={isLoadingLocations}
+            >
+            </SideBar>
+            <NavRB />
             <Container>
                 <h2 className="title-section">ALL RICKS</h2>
                 <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
