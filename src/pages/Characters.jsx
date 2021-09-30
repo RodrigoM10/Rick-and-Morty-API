@@ -15,6 +15,11 @@ import { useFetchAll } from '../hooks/useFetch';
 import './characters.css'
 import InputName from '../components/filterNavbar/InputName';
 import SideBar from '../components/sideBar/SideBar';
+import { MenuItem, SubMenu } from 'react-pro-sidebar';
+import { BiFilterAlt } from 'react-icons/bi';
+import { GiHealthCapsule } from 'react-icons/gi';
+import { RiAliensFill } from 'react-icons/ri';
+import { GoLocation } from 'react-icons/go';
 
 export default function Characters() {
     const [characters, setCharacters] = useState([]);
@@ -70,11 +75,40 @@ export default function Characters() {
                 locations={locations}
                 onSelectLocations={clearFilterLocations}
                 isLoading={isLoadingLocations}
-            />
+            >
+                <SubMenu title="Filter" icon={<BiFilterAlt />}>
+                    <MenuItem icon={<GiHealthCapsule />}>
+                        <SelectStatus
+                            setStatus={setStatus}
+                            status={status}
+                            onSelectStatus={clearFilterStatus}
+                        />
+                    </MenuItem>
+                    <MenuItem icon={<RiAliensFill />}>
+                        <SelectSpecies
+                            setSpecies={setSpecies}
+                            species={species}
+                            onSelectSpecies={clearFilterSpecies}
+                        />
+                    </MenuItem>
+
+                    {(location !== "Interdimensional Cable") && <MenuItem icon={<GoLocation />}>
+                        <SelectLocation
+
+                            location={location}
+                            locations={locations}
+                            onSelectLocations={clearFilterLocations}
+                            isLoading={isLoadingLocations}
+                        />
+                    </MenuItem>}
+
+                </SubMenu>
+            </SideBar>
             <NavRB>
                 <InputName
                     setName={setName}
                     name={name}
+
                 />
             </NavRB>
             <Container>

@@ -33,7 +33,7 @@ import SelectLocation from "../filterNavbar/SelectLocation";
 import InputName from "../filterNavbar/InputName";
 
 export default function SideBar(props) {
-    const { setStatus, status, onSelectStatus, setSpecies, species, onSelectSpecies, location, locations, onSelectLocations, isLoading } = props;
+    const { setStatus, status, onSelectStatus, setSpecies, species, onSelectSpecies, location, locations, onSelectLocations, isLoading, children } = props;
 
     //create initial menuCollapse state using useState hook
     const [menuCollapse, setMenuCollapse] = useState(true);
@@ -86,7 +86,8 @@ export default function SideBar(props) {
                                  Interdimensional Cable Stars
                                 <Link to="/interdimensionalTV" exact/>
                             </MenuItem>
-                          <SubMenu title="Filter" icon={<BiFilterAlt/>}>
+                            {children}
+                          {/* <SubMenu title="Filter" icon={<BiFilterAlt/>}>
                             <MenuItem icon={<GiHealthCapsule />}>
                                 <SelectStatus
                                     setStatus={setStatus}
@@ -112,7 +113,7 @@ export default function SideBar(props) {
                                 />
                             </MenuItem>}
 
-                          </SubMenu>
+                          </SubMenu> */}
                             <MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
                             <MenuItem icon={<BiCog />}>Settings</MenuItem>
                         </Menu>
