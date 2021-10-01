@@ -28,9 +28,9 @@ export default function SelectSpecies({ setSpecies, onSelect, species }) {
                     value={species}
                 >
                     <option value="" disabled>Species...</option>
-                    <option value="human">Human</option>
-                    <option value="alien">Alien</option>
-                    <option value="animal">Animal</option>
+                    <option value="Human">Human</option>
+                    <option value="Alien">Alien</option>
+                    <option value="Animal">Animal</option>
                 </Form.Select>
             </div>
             <CloseButton

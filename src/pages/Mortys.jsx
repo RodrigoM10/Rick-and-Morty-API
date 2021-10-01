@@ -24,7 +24,7 @@ export default function Mortys() {
 
 
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
-    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=morty&species=${species}&status=${status}`);
+    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=morty`);
 
 
 
@@ -38,13 +38,17 @@ export default function Mortys() {
         const start = 0 + page * limit - limit;
         const end = start + limit;
 
-        const charactersFiltered = allCharacters.filter((char) => !location || char.location.name === location);
-        setCharactersFoundByFilter(charactersFiltered);
+        const charactersFiltered = allCharacters
+            .filter((char) => !location || char.location.name === location)
+            .filter((char) => !species || char.species === species)
+            .filter((char) => !status || char.status === status);
         const charactersSlice = charactersFiltered.slice(start, end);
+        console.log("🚀 ~ file: Characters.jsx ~ line 44 ~ useEffect ~ charactersFiltered", charactersFiltered)
         setCharacters(charactersSlice);
+        console.log('SPECIES', species);
         const totalPages = Math.ceil(charactersFiltered.length / limit);
         setTotalPages(totalPages);
-    }, [allCharacters, page, location]);
+    }, [allCharacters, page, location, species, status]);
 
 
     const clearFilterStatus = (value) => {
@@ -77,11 +81,9 @@ export default function Mortys() {
                 setStatus={setStatus}
                 status={status}
                 onSelectStatus={clearFilterStatus}
-                //   
                 setSpecies={setSpecies}
                 species={species}
                 onSelectSpecies={clearFilterSpecies}
-                // 
                 location={location}
                 locations={locations}
                 onSelectLocations={clearFilterLocations}

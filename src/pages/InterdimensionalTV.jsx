@@ -22,7 +22,7 @@ export default function InterdimensionalTV() {
 
 
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
-    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?species=${species}&status=${status}`);
+    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character`);
 
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
@@ -33,12 +33,17 @@ export default function InterdimensionalTV() {
         const start = 0 + page * limit - limit;
         const end = start + limit;
 
-        const charactersFiltered = allCharacters.filter((char) => !location || char.location.name === location);
+        const charactersFiltered = allCharacters
+            .filter((char) => !location || char.location.name === location)
+            .filter((char) => !species || char.species === species)
+            .filter((char) => !status || char.status === status);
         const charactersSlice = charactersFiltered.slice(start, end);
+        console.log("🚀 ~ file: Characters.jsx ~ line 44 ~ useEffect ~ charactersFiltered", charactersFiltered)
         setCharacters(charactersSlice);
+        console.log('SPECIES', species);
         const totalPages = Math.ceil(charactersFiltered.length / limit);
         setTotalPages(totalPages);
-    }, [allCharacters, page, location]);
+    }, [allCharacters, page, location, species, status]);
 
     const clearFilterStatus = (value) => {
         setPage(1);
@@ -60,15 +65,13 @@ export default function InterdimensionalTV() {
     console.log('interdimensionaltv :', location)
     return (
         <>
-              <SideBar
+            <SideBar
                 setStatus={setStatus}
                 status={status}
                 onSelectStatus={clearFilterStatus}
-                //   
                 setSpecies={setSpecies}
                 species={species}
                 onSelectSpecies={clearFilterSpecies}
-                // 
                 location={location}
                 locations={locations}
                 onSelectLocations={clearFilterLocations}
