@@ -66,55 +66,36 @@ export default function Mortys() {
         setLocation(value);
     };
 
-    //logica para resultados
-    console.log('IS LOADING CHARACTERS', isLoadingCharacters ? 'loading' : 'loaded');
-    console.log('HAY CHARATERS EN LA PAG ?: ', characters.length ? 'Hay Resultados' : 'no hay reusltados');
-    console.log('CHARACTERS EN LA PAGINA', characters);
-    console.log('HAY CHARATERS FILTRADOS ?: ', charactersFoundByFilter.length ? 'Hay Resultados' : 'no hay reusltados');
-    console.log('CHARACTERS FILTRADOS', charactersFoundByFilter);
-    console.log('CANTIDAD DE PAGINAS ', totalPages);
 
-    // console.log('TODOS LOS MORTIS', allCharacters);
 
 
     return (
         <>
             <SideBar
-                setStatus={setStatus}
-                status={status}
-                onSelectStatus={clearFilterStatus}
-                setSpecies={setSpecies}
-                species={species}
-                onSelectSpecies={clearFilterSpecies}
-                location={location}
-                locations={locations}
-                onSelectLocations={clearFilterLocations}
-                isLoading={isLoadingLocations}
             >
                 <SubMenu title="Filter" icon={<BiFilterAlt />}>
                     <MenuItem icon={<GiHealthCapsule />}>
                         <SelectStatus
                             setStatus={setStatus}
                             status={status}
-                            onSelectStatus={clearFilterStatus}
+                            onSelect={clearFilterStatus}
                         />
                     </MenuItem>
                     <MenuItem icon={<RiAliensFill />}>
                         <SelectSpecies
                             setSpecies={setSpecies}
                             species={species}
-                            onSelectSpecies={clearFilterSpecies}
+                            onSelect={clearFilterSpecies}
                         />
                     </MenuItem>
                     <MenuItem icon={<GoLocation />}>
                         <SelectLocation
                             location={location}
                             locations={locations}
-                            onSelectLocations={clearFilterLocations}
+                            onSelect={clearFilterLocations}
                             isLoading={isLoadingLocations}
                         />
                     </MenuItem>
-
                 </SubMenu>
             </SideBar>
             <NavRB />
@@ -122,32 +103,17 @@ export default function Mortys() {
                 <Container>
                     <h2 className="title-section">ALL MORTYS</h2>
                     <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
-                        {
-                            (!isLoadingCharacters && characters.length)
-                            &&
-                            (characters.map((char) => (<Character key={char.id} character={char} />)))
-                        }
+                        {characters.map((char) => (<Character key={char.id} character={char} />
+                        ))}
 
                         {/* No results message ↓ */}
-                        {(!characters.length && !isLoadingCharacters) && (
-                            <Card className="glass-card text-center text-white-50 p-5 mt-5">
-                                <Card.Title>No results</Card.Title>
-                            </Card>
-                        )}
-                        {/* No results message ↓ */}
-                        {(isLoadingCharacters && characters.length && charactersFoundByFilter.length) && (
+                        {!isLoadingCharacters && !characters.length && (
                             <CardNoResults />
-
                         )}
-
-                        {
-                            (isLoadingCharacters && !charactersFoundByFilter.length)
-                            &&
-                            <div className="position-fixed center-spinner">
-                                {<SpinLoader size="lg" />}
-                            </div>
-                        }
-
+                        {/* spinner */}
+                        <div className="position-fixed center-spinner">
+                            {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
+                        </div>
                     </div>
                     <Pagination
                         currentPage={page}

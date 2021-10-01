@@ -63,27 +63,21 @@ export default function InterdimensionalTV() {
     console.log('interdimensionaltv :', location)
     return (
         <>
-             <SideBar
-                setStatus={setStatus}
-                status={status}
-                onSelectStatus={clearFilterStatus}
-                setSpecies={setSpecies}
-                species={species}
-                onSelectSpecies={clearFilterSpecies}
+            <SideBar
             >
                 <SubMenu title="Filter" icon={<BiFilterAlt />}>
                     <MenuItem icon={<GiHealthCapsule />}>
                         <SelectStatus
                             setStatus={setStatus}
                             status={status}
-                            onSelectStatus={clearFilterStatus}
+                            onSelect={clearFilterStatus}
                         />
                     </MenuItem>
                     <MenuItem icon={<RiAliensFill />}>
                         <SelectSpecies
                             setSpecies={setSpecies}
                             species={species}
-                            onSelectSpecies={clearFilterSpecies}
+                            onSelect={clearFilterSpecies}
                         />
                     </MenuItem>
                 </SubMenu>
@@ -96,10 +90,11 @@ export default function InterdimensionalTV() {
                     ))}
 
                     {/* No results message ↓ */}
-                    {!characters.length && !isLoadingCharacters && (
+                    {!isLoadingCharacters && !characters.length && (
                         <CardNoResults />
                     )}
-
+                    
+                    {/* spinner */}
                     <div className="position-fixed center-spinner">
                         {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
                     </div>

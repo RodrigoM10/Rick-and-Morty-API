@@ -17,6 +17,7 @@ import { GiHealthCapsule } from 'react-icons/gi';
 import { RiAliensFill } from 'react-icons/ri';
 import { GoLocation } from 'react-icons/go';
 import './characters.css'
+import { CardNoResults } from "../components/cardNoResults/CardNoResults";
 
 
 export default function Characters() {
@@ -27,7 +28,7 @@ export default function Characters() {
 
   const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
   const [allCharacters, isLoadingCharacters] = useFetchAll(
-    `${API_URL}/character/?name=${name}`
+    `${API_URL}/character`
   );
 
   const [totalPages, setTotalPages] = useState(0);
@@ -40,10 +41,10 @@ export default function Characters() {
     const end = start + limit;
 
     const charactersFiltered = allCharacters
-    .filter((char) => !location || char.location.name === location)
-    .filter((char) => !species || char.species === species)
-    .filter((char) => !status || char.status === status)
-    
+      .filter((char) => !location || char.location.name === location)
+      .filter((char) => !species || char.species === species)
+      .filter((char) => !status || char.status === status)
+
     const charactersSlice = charactersFiltered.slice(start, end);
     console.log("🚀 ~ file: Characters.jsx ~ line 44 ~ useEffect ~ charactersFiltered", charactersFiltered)
     setCharacters(charactersSlice);
@@ -65,47 +66,39 @@ export default function Characters() {
     setPage(1);
     setLocation(value);
   };
+  //logica para resultados
+  console.log('IS LOADING CHARACTERS', isLoadingCharacters ? 'loading' : 'loaded');
+  console.log('HAY CHARATERS EN LA PAG ?: ', characters.length ? 'Hay Resultados' : 'no hay reusltados');
+
 
   return (
     <>
       <SideBar
-        setStatus={setStatus}
-        status={status}
-        onSelectStatus={clearFilterStatus}
-        setSpecies={setSpecies}
-        species={species}
-        onSelectSpecies={clearFilterSpecies}
-        location={location}
-        locations={locations}
-        onSelectLocations={clearFilterLocations}
-        isLoading={isLoadingLocations}
       >
-           <SubMenu title="Filter" icon={<BiFilterAlt />}>
-                    <MenuItem icon={<GiHealthCapsule />}>
-                        <SelectStatus
-                            setStatus={setStatus}
-                            status={status}
-                            onSelectStatus={clearFilterStatus}
-                        />
-                    </MenuItem>
-                    <MenuItem icon={<RiAliensFill />}>
-                        <SelectSpecies
-                            setSpecies={setSpecies}
-                            species={species}
-                            onSelectSpecies={clearFilterSpecies}
-                        />
-                    </MenuItem>
-                    <MenuItem icon={<GoLocation />}>
-                        <SelectLocation
-
-                            location={location}
-                            locations={locations}
-                            onSelectLocations={clearFilterLocations}
-                            isLoading={isLoadingLocations}
-                        />
-                    </MenuItem>
-
-                </SubMenu>
+        <SubMenu title="Filter" icon={<BiFilterAlt />}>
+          <MenuItem icon={<GiHealthCapsule />}>
+            <SelectStatus
+              setStatus={setStatus}
+              status={status}
+              onSelect={clearFilterStatus}
+            />
+          </MenuItem>
+          <MenuItem icon={<RiAliensFill />}>
+            <SelectSpecies
+              setSpecies={setSpecies}
+              species={species}
+              onSelect={clearFilterSpecies}
+            />
+          </MenuItem>
+          <MenuItem icon={<GoLocation />}>
+            <SelectLocation
+              location={location}
+              locations={locations}
+              onSelect={clearFilterLocations}
+              isLoading={isLoadingLocations}
+            />
+          </MenuItem>
+        </SubMenu>
       </SideBar>
       <NavRB>
         <InputName setName={setName} name={name} />
@@ -118,12 +111,11 @@ export default function Characters() {
           ))}
 
           {/* No results message ↓ */}
-          {!characters.length && !isLoadingCharacters && (
-            <Card className="glass-card text-white-50 p-5 mt-5">
-              <Card.Title>Sin resultados</Card.Title>
-            </Card>
+          {!isLoadingCharacters && !characters.length && (
+            <CardNoResults />
           )}
-
+          
+          {/* spinner */}
           <div className="position-fixed center-spinner">
             {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
           </div>

@@ -16,6 +16,7 @@ import { GiHealthCapsule } from 'react-icons/gi';
 import { RiAliensFill } from 'react-icons/ri';
 import { GoLocation } from 'react-icons/go';
 import './characters.css'
+import { CardNoResults } from '../components/cardNoResults/CardNoResults';
 
 export default function Ricks() {
     const [characters, setCharacters] = useState([]);
@@ -65,41 +66,30 @@ export default function Ricks() {
     return (
         <>
             <SideBar
-                setStatus={setStatus}
-                status={status}
-                onSelectStatus={clearFilterStatus}
-                setSpecies={setSpecies}
-                species={species}
-                onSelectSpecies={clearFilterSpecies}
-                location={location}
-                locations={locations}
-                onSelectLocations={clearFilterLocations}
-                isLoading={isLoadingLocations}
             >
                 <SubMenu title="Filter" icon={<BiFilterAlt />}>
                     <MenuItem icon={<GiHealthCapsule />}>
                         <SelectStatus
                             setStatus={setStatus}
                             status={status}
-                            onSelectStatus={clearFilterStatus}
+                            onSelect={clearFilterStatus}
                         />
                     </MenuItem>
                     <MenuItem icon={<RiAliensFill />}>
                         <SelectSpecies
                             setSpecies={setSpecies}
                             species={species}
-                            onSelectSpecies={clearFilterSpecies}
+                            onSelect={clearFilterSpecies}
                         />
                     </MenuItem>
                     <MenuItem icon={<GoLocation />}>
                         <SelectLocation
                             location={location}
                             locations={locations}
-                            onSelectLocations={clearFilterLocations}
+                            onSelect={clearFilterLocations}
                             isLoading={isLoadingLocations}
                         />
                     </MenuItem>
-
                 </SubMenu>
             </SideBar>
             <NavRB />
@@ -109,13 +99,12 @@ export default function Ricks() {
                     {characters.map((char) => (<Character key={char.id} character={char} />
                     ))}
 
-                    {/* No results message ↓ */}
-                    {!characters.length && !isLoadingCharacters && (
-                        <Card className="glass-card text-white-50 p-5 mt-5">
-                            <Card.Title>Sin resultados</Card.Title>
-                        </Card>
-                    )}
 
+                    {/* No results message ↓ */}
+                    {!isLoadingCharacters && !characters.length && (
+                        <CardNoResults />
+                    )}
+                    {/* spinner */}
                     <div className="position-fixed center-spinner">
                         {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
                     </div>
