@@ -15,6 +15,11 @@ import { useFetchAll } from '../hooks/useFetch';
 import './characters.css'
 import SideBar from '../components/sideBar/SideBar';
 import InputName from '../components/filterNavbar/InputName';
+import { MenuItem, SubMenu } from 'react-pro-sidebar';
+import { BiFilterAlt } from 'react-icons/bi';
+import { GiHealthCapsule } from 'react-icons/gi';
+import { RiAliensFill } from 'react-icons/ri';
+import { GoLocation } from 'react-icons/go';
 
 
 export default function Mortys() {
@@ -24,7 +29,7 @@ export default function Mortys() {
 
 
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
-    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=morty&species=${species}&status=${status}`);
+    const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=morty`);
 
 
 
@@ -38,13 +43,17 @@ export default function Mortys() {
         const start = 0 + page * limit - limit;
         const end = start + limit;
 
-        const charactersFiltered = allCharacters.filter((char) => !location || char.location.name === location);
-        setCharactersFoundByFilter(charactersFiltered);
+        const charactersFiltered = allCharacters
+            .filter((char) => !location || char.location.name === location)
+            .filter((char) => !species || char.species === species)
+            .filter((char) => !status || char.status === status);
         const charactersSlice = charactersFiltered.slice(start, end);
+        console.log("🚀 ~ file: Characters.jsx ~ line 44 ~ useEffect ~ charactersFiltered", charactersFiltered)
         setCharacters(charactersSlice);
+        console.log('SPECIES', species);
         const totalPages = Math.ceil(charactersFiltered.length / limit);
         setTotalPages(totalPages);
-    }, [allCharacters, page, location]);
+    }, [allCharacters, page, location, species, status]);
 
 
     const clearFilterStatus = (value) => {
@@ -77,16 +86,39 @@ export default function Mortys() {
                 setStatus={setStatus}
                 status={status}
                 onSelectStatus={clearFilterStatus}
-                //   
                 setSpecies={setSpecies}
                 species={species}
                 onSelectSpecies={clearFilterSpecies}
-                // 
                 location={location}
                 locations={locations}
                 onSelectLocations={clearFilterLocations}
                 isLoading={isLoadingLocations}
             >
+                <SubMenu title="Filter" icon={<BiFilterAlt />}>
+                    <MenuItem icon={<GiHealthCapsule />}>
+                        <SelectStatus
+                            setStatus={setStatus}
+                            status={status}
+                            onSelectStatus={clearFilterStatus}
+                        />
+                    </MenuItem>
+                    <MenuItem icon={<RiAliensFill />}>
+                        <SelectSpecies
+                            setSpecies={setSpecies}
+                            species={species}
+                            onSelectSpecies={clearFilterSpecies}
+                        />
+                    </MenuItem>
+                    <MenuItem icon={<GoLocation />}>
+                        <SelectLocation
+                            location={location}
+                            locations={locations}
+                            onSelectLocations={clearFilterLocations}
+                            isLoading={isLoadingLocations}
+                        />
+                    </MenuItem>
+
+                </SubMenu>
             </SideBar>
             <NavRB />
             <div className="d-flex ">

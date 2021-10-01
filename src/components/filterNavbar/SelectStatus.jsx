@@ -29,9 +29,9 @@ export default function SelectStatus({ setStatus,status, onSelect }) {
                 value={status}
             >
                 <option value="" disabled>Status...</option>
-                <option value="alive">Alive</option>
-                <option value="dead">Dead</option>
-                <option value="unknown">Unknown</option>
+                <option value="Alive">Alive</option>
+                <option value="Dead">Dead</option>
+                <option value="Unknown">Unknown</option>
             </Form.Select>
         </div>
         <CloseButton

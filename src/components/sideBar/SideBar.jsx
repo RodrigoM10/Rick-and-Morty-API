@@ -87,33 +87,6 @@ export default function SideBar(props) {
                                 <Link to="/interdimensionalTV" exact/>
                             </MenuItem>
                             {children}
-                          {/* <SubMenu title="Filter" icon={<BiFilterAlt/>}>
-                            <MenuItem icon={<GiHealthCapsule />}>
-                                <SelectStatus
-                                    setStatus={setStatus}
-                                    status={status}
-                                    onSelect={onSelectStatus}
-                                />
-                            </MenuItem>
-                            <MenuItem icon={<RiAliensFill />}>
-                                <SelectSpecies
-                                    setSpecies={setSpecies}
-                                    species={species}
-                                    onSelect={onSelectSpecies}
-                                />
-                            </MenuItem>
-                        
-                        {(location !=="Interdimensional Cable") && <MenuItem icon={<GoLocation />}>
-                                <SelectLocation
-                                
-                                    location={location}
-                                    locations={locations}
-                                    onSelect={onSelectLocations}
-                                    isLoading={isLoading}
-                                />
-                            </MenuItem>}
-
-                          </SubMenu> */}
                             <MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
                             <MenuItem icon={<BiCog />}>Settings</MenuItem>
                         </Menu>
