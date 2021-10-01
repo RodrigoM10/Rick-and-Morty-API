@@ -4,22 +4,19 @@ import Character from '../components/card-character/Character';
 import { CardNoResults } from '../components/cardNoResults/CardNoResults';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
-import SelectLocation from '../components/filterNavbar/SelectLocation';
-import SelectStatus from '../components/filterNavbar/SelectStatus';
-import SelectSpecies from '../components/filterNavbar/SelectSpecies';
+import SideBar from '../components/sideBar/SideBar';
+import SelectLocation from '../components/filters/SelectLocation';
+import SelectStatus from '../components/filters/SelectStatus';
+import SelectSpecies from '../components/filters/SelectSpecies';
 import { SpinLoader } from '../components/spinner/Spinner';
 import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
-
-// import PaginationRB from '../components/pagination/Pagination';
-import './characters.css'
-import SideBar from '../components/sideBar/SideBar';
-import InputName from '../components/filterNavbar/InputName';
 import { MenuItem, SubMenu } from 'react-pro-sidebar';
 import { BiFilterAlt } from 'react-icons/bi';
 import { GiHealthCapsule } from 'react-icons/gi';
 import { RiAliensFill } from 'react-icons/ri';
 import { GoLocation } from 'react-icons/go';
+import './characters.css'
 
 
 export default function Mortys() {

@@ -3,20 +3,18 @@ import { Container } from 'react-bootstrap';
 import Character from '../components/card-character/Character';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
-import SelectSpecies from '../components/filterNavbar/SelectSpecies';
-import SelectStatus from '../components/filterNavbar/SelectStatus';
+import SelectSpecies from '../components/filters/SelectSpecies';
+import SelectStatus from '../components/filters/SelectStatus';
 import { SpinLoader } from '../components/spinner/Spinner';
 import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
 import { CardNoResults } from '../components/cardNoResults/CardNoResults';
-
-
-import './characters.css'
 import SideBar from '../components/sideBar/SideBar';
 import { MenuItem, SubMenu } from 'react-pro-sidebar';
 import { BiFilterAlt } from 'react-icons/bi';
 import { GiHealthCapsule } from 'react-icons/gi';
 import { RiAliensFill } from 'react-icons/ri';
+import './characters.css'
 
 
 export default function InterdimensionalTV() {

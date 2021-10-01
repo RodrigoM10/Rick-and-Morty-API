@@ -1,4 +1,4 @@
-import React, { Children, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 //import sidebar css from react-pro-sidebar module and our custom css
@@ -11,29 +11,16 @@ import {
     ProSidebar,
     SidebarContent,
     SidebarHeader,
-    SubMenu,
 } from "react-pro-sidebar";
 
 //import icons from react icons
-import {
-    FiArrowLeftCircle,
-    FiArrowRightCircle,
-    FiHome,
-} from "react-icons/fi";
-import { FaHeart, FaList, FaRegHeart } from "react-icons/fa";
-import { RiAliensFill, RiPencilLine } from "react-icons/ri";
-import { BiCog, BiFilterAlt, BiSearch } from "react-icons/bi";
-import { GiHealthCapsule } from "react-icons/gi";
+import { FiHome } from "react-icons/fi";
+import {  FaRegHeart } from "react-icons/fa";
+import { BiCog } from "react-icons/bi";
 import { BsFilterLeft, BsFilterRight } from "react-icons/bs";
-import { GoLocation } from "react-icons/go";
-import SelectStatus from "../filterNavbar/SelectStatus";
-import SelectSpecies from "../filterNavbar/SelectSpecies";
 
-import SelectLocation from "../filterNavbar/SelectLocation";
-import InputName from "../filterNavbar/InputName";
 
-export default function SideBar(props) {
-    const { setStatus, status, onSelectStatus, setSpecies, species, onSelectSpecies, location, locations, onSelectLocations, isLoading, children } = props;
+export default function SideBar({children}) {    
 
     //create initial menuCollapse state using useState hook
     const [menuCollapse, setMenuCollapse] = useState(true);
@@ -43,9 +30,6 @@ export default function SideBar(props) {
         //condition checking to change state from true to false and vice versa
         menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
     };
-
-
-
 
     return (
         <>
