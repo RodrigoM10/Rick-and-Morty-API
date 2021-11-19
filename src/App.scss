@@ -1,8 +1,17 @@
 
+
 .footer-fix {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+.footer-style {
+  backdrop-filter: blur(10px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(100%) !important;
+  background-color: #111928f3 !important;
+  color: white !important;
+  height: 100px !important;
+  z-index: 200;
 }
 .background {
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(121, 121, 121, 0.8)), url(https://res.cloudinary.com/dcx1rcwvu/image/upload/v1630685760/rick%20and%20morty/rick_mortybackground_jr2l4i.png);
@@ -14,5 +23,3 @@
   top: 50vh;
   left: 46.5%;
 }
-
-

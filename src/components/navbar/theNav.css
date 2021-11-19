@@ -5,6 +5,7 @@
   background-color: #111928b0 !important;
   color: white !important;
 z-index: 0;
+height: 56px;
 }
 .navbar .nav-link {
   color: rgb(177, 172, 172);

@@ -4,11 +4,10 @@ import {
 } from 'react-bootstrap';
 
 
-export default function SelectStatus({ setStatus,status, onSelect }) {
+export default function  SelectStatus({ setStatus,status, onSelect }) {
 
     const handleSelect = (e) => {
         setStatus(e.target.value)
-
     };
 
     const clearSelect = () => {

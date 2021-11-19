@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import Character from '../components/card-character/Character';
 import { NavRB } from '../components/navbar/TheNav';
 import Pagination from '../components/pagination/PaginationJJ';
@@ -11,19 +11,18 @@ import { API_URL } from '../config/api';
 import { useFetchAll } from '../hooks/useFetch';
 import SideBar from '../components/sideBar/SideBar';
 import { MenuItem, SubMenu } from 'react-pro-sidebar';
-import { BiFilterAlt } from 'react-icons/bi';
-import { GiHealthCapsule } from 'react-icons/gi';
-import { RiAliensFill } from 'react-icons/ri';
-import { GoLocation } from 'react-icons/go';
+
 import './characters.css'
 import { CardNoResults } from '../components/cardNoResults/CardNoResults';
+import IconGun from '../components/icons/IconGun';
+import IconSpecies from '../components/icons/IconSpecies';
+import IconStatus from '../components/icons/IconStatus';
+import IconLocation from '../components/icons/IconLocation';
 
 export default function Ricks() {
     const [characters, setCharacters] = useState([]);
     const [species, setSpecies] = useState('');
     const [status, setStatus] = useState('');
-
-
 
     const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
     const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=rick`);
@@ -42,13 +41,10 @@ export default function Ricks() {
             .filter((char) => !species || char.species === species)
             .filter((char) => !status || char.status === status);
         const charactersSlice = charactersFiltered.slice(start, end);
-        console.log("🚀 ~ file: Characters.jsx ~ line 44 ~ useEffect ~ charactersFiltered", charactersFiltered)
         setCharacters(charactersSlice);
-        console.log('SPECIES', species);
         const totalPages = Math.ceil(charactersFiltered.length / limit);
         setTotalPages(totalPages);
     }, [allCharacters, page, location, species, status]);
-
 
     const clearFilterStatus = (value) => {
         setPage(1);
@@ -67,22 +63,22 @@ export default function Ricks() {
         <>
             <SideBar
             >
-                <SubMenu title="Filter" icon={<BiFilterAlt />}>
-                    <MenuItem icon={<GiHealthCapsule />}>
+                <SubMenu title="Filter" icon={<IconGun />}>
+                    <MenuItem icon={<IconStatus />}>
                         <SelectStatus
                             setStatus={setStatus}
                             status={status}
                             onSelect={clearFilterStatus}
                         />
                     </MenuItem>
-                    <MenuItem icon={<RiAliensFill />}>
+                    <MenuItem icon={<IconSpecies />}>
                         <SelectSpecies
                             setSpecies={setSpecies}
                             species={species}
                             onSelect={clearFilterSpecies}
                         />
                     </MenuItem>
-                    <MenuItem icon={<GoLocation />}>
+                    <MenuItem icon={<IconLocation />}>
                         <SelectLocation
                             location={location}
                             locations={locations}
@@ -95,7 +91,7 @@ export default function Ricks() {
             <NavRB />
             <Container>
                 <h2 className="title-section">ALL RICKS</h2>
-                <div className="row row-cols-1 row-cols-lg-3  justify-content-center align-items-center">
+                <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-end justify-content-sm-center align-items-center">
                     {characters.map((char) => (<Character key={char.id} character={char} />
                     ))}
 

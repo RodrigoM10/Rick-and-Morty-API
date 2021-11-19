@@ -17,7 +17,7 @@ export default function CharacterFull({ character }) {
                     <ListGroupItem>Status : {status}</ListGroupItem>
                     <ListGroupItem>Specie : {species}</ListGroupItem>
                     <ListGroupItem>Gender : {gender}</ListGroupItem>
-                    <ListGroupItem>Location :  </ListGroupItem>
+                    {/* <ListGroupItem>Location : {location} </ListGroupItem> */}
                 </ListGroup>
                 <Card.Body>
                     <Card.Link href="#">Episodes</Card.Link>

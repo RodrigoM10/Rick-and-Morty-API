@@ -14,36 +14,33 @@ import {
 } from "react-pro-sidebar";
 
 //import icons from react icons
-import { FiHome } from "react-icons/fi";
-import {  FaRegHeart } from "react-icons/fa";
-import { BiCog } from "react-icons/bi";
 import { BsFilterLeft, BsFilterRight } from "react-icons/bs";
+import IconAllCharacters from "../icons/IconAllCharacters";
+import IconAllRicks from "../icons/IconAllRicks";
+import IconAllMortys from "../icons/IconAllMortys";
+import IconTv from "../icons/IconTv";
+import IconConfig from "../icons/IconConfig";
+import IconFav from "../icons/IconFav";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 
-export default function SideBar({children}) {    
+export default function SideBar({ children }) {
 
-    //create initial menuCollapse state using useState hook
     const [menuCollapse, setMenuCollapse] = useState(true);
-
-    //create a custom function that will change menucollapse state from false to true and true to false
     const menuIconClick = () => {
-        //condition checking to change state from true to false and vice versa
         menuCollapse ? setMenuCollapse(false) : setMenuCollapse(true);
     };
 
     return (
         <>
             <div id="sidebar">
-                {/* collapsed props to change menu size using menucollapse state */}
                 <ProSidebar collapsed={menuCollapse}>
                     <SidebarHeader>
                         <div className="closemenu d-flex justify-content-center align-items-center">
-                            {/* small and big change using menucollapse state */}
                             <div>
                                 <span>{menuCollapse ? " " : "Main Menu"}</span>
                             </div>
                             <div onClick={menuIconClick}>
-                                {/* changing menu collapse icon on click */}
                                 {menuCollapse ? (
                                     <BsFilterLeft />
                                 ) : (
@@ -54,25 +51,92 @@ export default function SideBar({children}) {
                     </SidebarHeader>
                     <SidebarContent>
                         <Menu iconShape="square">
-                            <MenuItem active={true} icon={<FiHome />}  >
-                                All the characters
-                                <Link to="/" exact/>
-                            </MenuItem>
-                            <MenuItem active={true} icon={<FiHome />}  >
-                                All Ricks
-                                <Link to="/ricks" exact/>
-                            </MenuItem>
-                            <MenuItem active={true} icon={<FiHome />}  >
-                                All Mortys
-                                <Link to="/mortys" exact/>
-                            </MenuItem>
-                            <MenuItem active={true} icon={<FiHome />}  >
-                                 Interdimensional Cable Stars
-                                <Link to="/interdimensionalTV" exact/>
-                            </MenuItem>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{ show: 250, hide: 400 }}
+                                overlay={
+                                    (props) => (
+                                        <Tooltip id="button-tooltip" className={menuCollapse? " " : " d-none "} {...props}>
+                                            All characters
+                                        </Tooltip>)
+                                }
+                            >
+                                <MenuItem active={true} icon={<IconAllCharacters />} >
+                                    All the characters
+                                    <Link to="/" exact />
+                                </MenuItem>
+                            </OverlayTrigger>
+
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{ show: 250, hide: 400 }}
+                                overlay={
+                                    (props) => (
+                                        <Tooltip id="button-tooltip" className={menuCollapse? " " : " d-none "} {...props}>
+                                            All Ricks
+                                        </Tooltip>)
+                                }
+                            >
+                                <MenuItem active={true} icon={<IconAllRicks />}  >
+                                    All Ricks
+                                    <Link to="/ricks" exact />
+                                </MenuItem>
+                            </OverlayTrigger>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{ show: 250, hide: 400 }}
+                                overlay={
+                                    (props) => (
+                                        <Tooltip id="button-tooltip"  className={menuCollapse? " " : " d-none "} {...props}>
+                                            All Mortys
+                                        </Tooltip>)
+                                }
+                            >
+                                <MenuItem active={true} icon={<IconAllMortys />}  >
+                                    All Mortys
+                                    <Link to="/mortys" exact />
+                                </MenuItem>
+                            </OverlayTrigger>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{ show: 250, hide: 400 }}
+                                overlay={
+                                    (props) => (
+                                        <Tooltip id="button-tooltip" className={menuCollapse? " " : " d-none "} {...props}>
+                                            Interdimensional TV
+                                        </Tooltip>)
+                                }
+                            >
+                                <MenuItem active={true} icon={<IconTv />}  >
+                                    Interdimensional Cable Stars
+                                    <Link to="/interdimensionalTV" exact />
+                                </MenuItem>
+                            </OverlayTrigger>
                             {children}
-                            <MenuItem icon={<FaRegHeart />}>Favourite</MenuItem>
-                            <MenuItem icon={<BiCog />}>Settings</MenuItem>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{ show: 250, hide: 400 }}
+                                overlay={
+                                    (props) => (
+                                        <Tooltip id="button-tooltip" className={menuCollapse? " " : " d-none "} {...props}>
+                                            Favourite
+                                        </Tooltip>)
+                                }
+                            >
+                                <MenuItem icon={<IconFav />}>Favourite</MenuItem>
+                            </OverlayTrigger>
+                            <OverlayTrigger
+                                placement="right"
+                                delay={{ show: 250, hide: 400 }}
+                                overlay={
+                                    (props) => (
+                                        <Tooltip id="button-tooltip" className={menuCollapse? " " : " d-none "} {...props}>
+                                            Settings
+                                        </Tooltip>)
+                                }
+                            >
+                                <MenuItem icon={<IconConfig />}>Settings</MenuItem>
+                            </OverlayTrigger>
                         </Menu>
                     </SidebarContent>
                 </ProSidebar>

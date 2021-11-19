@@ -9,3 +9,8 @@
     text-align: center;
     width: 60%;
 }
+@media only screen and (max-width: 576px) {
+.title-section{
+margin: 2rem 2rem 2rem auto;
+}
+}

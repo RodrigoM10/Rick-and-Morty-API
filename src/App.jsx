@@ -1,7 +1,6 @@
 import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { Header } from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 
 import Characters from "./pages/Characters"
@@ -16,8 +15,8 @@ function App() {
 
 
   return (
+    
     <div className="background footer-fix">
-      {/* <Header /> */}
           <Switch>
               <Route path="/" exact>
                 <Characters  />
