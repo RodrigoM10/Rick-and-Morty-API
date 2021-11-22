@@ -4,8 +4,8 @@
   -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
   background-color: #111928b0 !important;
   color: white !important;
-z-index: 0;
-height: 56px;
+  z-index: 1;
+  height: 56.5px;
 }
 .navbar .nav-link {
   color: rgb(177, 172, 172);

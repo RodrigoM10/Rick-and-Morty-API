@@ -16,6 +16,9 @@ import { useState } from "react";
 import { useFavoritesContext } from "./context/favoritesContext";
 // Fetch 
 import { useFetchAll } from "./hooks/useFetch";
+import { TheNav } from "./components/theNav/TheNav";
+import SideBar from "./components/sideBar/SideBar";
+import { Container } from "react-bootstrap";
 
 function App() {
 
@@ -53,104 +56,90 @@ function App() {
   return (
 
     <div className="background footer-fix">
-      <Switch>
-        <Route path="/" exact>
-          <Characters
-            characters={characters}
-            setCharacters={setCharacters}
-            species={species}
-            setSpecies={setSpecies}
-            status={status}
-            setStatus={setStatus}
-            locations={locations}
-            isLoadingLocations={isLoadingLocations}
-            totalPages={totalPages}
-            setTotalPages={setTotalPages}
-            page={page}
-            setPage={setPage}
-            location={location}
-            toggleFavorite={toggleFavorite}
-            isFavorite={isFavorite}
-            clearFilterStatus={clearFilterStatus}
-            clearFilterSpecies={clearFilterSpecies}
-            clearFilterLocations={clearFilterLocations}
-          />
-        </Route>
-
-        <Route path="/ricks">
-          <Ricks
-            characters={characters}
-            setCharacters={setCharacters}
-            species={species}
-            setSpecies={setSpecies}
-            status={status}
-            setStatus={setStatus}
-            locations={locations}
-            isLoadingLocations={isLoadingLocations}
-            totalPages={totalPages}
-            setTotalPages={setTotalPages}
-            page={page}
-            setPage={setPage}
-            location={location}
-            toggleFavorite={toggleFavorite}
-            isFavorite={isFavorite}
-            clearFilterStatus={clearFilterStatus}
-            clearFilterSpecies={clearFilterSpecies}
-            clearFilterLocations={clearFilterLocations}
-          />
-        </Route>
-
-        <Route path="/mortys">
-          <Mortys
-            characters={characters}
-            setCharacters={setCharacters}
-            species={species}
-            setSpecies={setSpecies}
-            status={status}
-            setStatus={setStatus}
-            locations={locations}
-            isLoadingLocations={isLoadingLocations}
-            totalPages={totalPages}
-            setTotalPages={setTotalPages}
-            page={page}
-            setPage={setPage}
-            location={location}
-            toggleFavorite={toggleFavorite}
-            isFavorite={isFavorite}
-            clearFilterStatus={clearFilterStatus}
-            clearFilterSpecies={clearFilterSpecies}
-            clearFilterLocations={clearFilterLocations}
-          />
-        </Route>
-
-        <Route path="/interdimensionalTV">
-          <InterdimensionalTV
-            characters={characters}
-            setCharacters={setCharacters}
-            species={species}
-            setSpecies={setSpecies}
-            status={status}
-            setStatus={setStatus}
-            totalPages={totalPages}
-            setTotalPages={setTotalPages}
-            page={page}
-            setPage={setPage}
-            toggleFavorite={toggleFavorite}
-            isFavorite={isFavorite}
-            clearFilterStatus={clearFilterStatus}
-            clearFilterSpecies={clearFilterSpecies}
-          />
-        </Route>
-
-        <Route path="/character/:charID">
-          <CharacterDetails />
-        </Route>
-
-        <Route path="/favorites">
-          <Favorites/>
-        </Route>
-
-      </Switch>
+      <TheNav />
+      <div>
+        <SideBar
+          species={species}
+          setSpecies={setSpecies}
+          status={status}
+          setStatus={setStatus}
+          location={location}
+          locations={locations}
+          isLoadingLocations={isLoadingLocations}
+          clearFilterStatus={clearFilterStatus}
+          clearFilterSpecies={clearFilterSpecies}
+          clearFilterLocations={clearFilterLocations}
+        />
+        <Container className="ps-auto">
+          <Switch>
+            <Route path="/" exact>
+              <Characters
+                characters={characters}
+                setCharacters={setCharacters}
+                species={species}
+                status={status}
+                totalPages={totalPages}
+                setTotalPages={setTotalPages}
+                page={page}
+                setPage={setPage}
+                location={location}
+                toggleFavorite={toggleFavorite}
+                isFavorite={isFavorite}
+              />
+            </Route>
+            <Route path="/ricks">
+              <Ricks
+                characters={characters}
+                setCharacters={setCharacters}
+                species={species}
+                status={status}
+                totalPages={totalPages}
+                setTotalPages={setTotalPages}
+                page={page}
+                setPage={setPage}
+                location={location}
+                toggleFavorite={toggleFavorite}
+                isFavorite={isFavorite}
+              />
+            </Route>
+            <Route path="/mortys">
+              <Mortys
+                characters={characters}
+                setCharacters={setCharacters}
+                species={species}
+                status={status}
+                totalPages={totalPages}
+                setTotalPages={setTotalPages}
+                page={page}
+                setPage={setPage}
+                location={location}
+                toggleFavorite={toggleFavorite}
+                isFavorite={isFavorite}
+              />
+            </Route>
+            <Route path="/interdimensionalTV">
+              <InterdimensionalTV
+                characters={characters}
+                setCharacters={setCharacters}
+                species={species}
+                status={status}
+                totalPages={totalPages}
+                setTotalPages={setTotalPages}
+                page={page}
+                setPage={setPage}
+                toggleFavorite={toggleFavorite}
+                isFavorite={isFavorite}
+              />
+            </Route>
+            <Route path="/character/:charID">
+              <CharacterDetails />
+            </Route>
+            <Route path="/favorites">
+              <Favorites />
+            </Route>
+          </Switch>
+        </Container>
+      </div>
       <Footer />
     </div>
   );

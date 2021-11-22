@@ -1,24 +1,66 @@
-import React from 'react'
-import { Pagination } from 'react-bootstrap';
+import './pagination.css'
+import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 
-export default function PaginationRB({setPage, page, info}) {
+export default function Pagination({ currentPage = 1, totalPages = 0, onSetPage, isLoading }) {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+    const handleSetPage = (n) => {
+      scrollToTop();
+      onSetPage(n);
+    };
+    const pagination = () => {
+      const pages = [];
+      let count = 0;
+      for (let i = currentPage - 3; i < currentPage + 5; i++) {
+        const active = i === currentPage ? 'current-number' : '';
+  
+        if (i > 0 && i <= totalPages && count < 5) {
+          pages.push(
+            <li key={i}
+            onClick={() => handleSetPage(i)}
+            className={`pagination-number ${active}`}>
+                {i}
+            </li>
+          );
+          count++;
+        }
+      }
+  
+      return pages;
+    };
+    const prevNext = (n) => {
+      const disabled = n === 0 || n > totalPages;
+      const isPrevious = n < currentPage;
+      const ariaLabel = isPrevious ? 'Previous' : 'Next';
+      const arrow = isPrevious ? <AiOutlineLeft className="mb-1"  
+      /> : <AiOutlineRight className="mb-1" /> ;
+      const hidden = isPrevious ? 'Previous' : 'Next';
+  
+      return (
+          <button
+            onClick={() => {
+              handleSetPage(n);
+            }}
+            className="pagination-arrow arrow-left mx-2"
+            aria-label={ariaLabel}
+            disabled={disabled}
+          >
+            <span aria-hidden="true">{arrow}</span>
+            <span className="visually-hidden">{hidden}</span>
+          </button>
+      );
+    };
 
-    const prevPage = () => { setPage(page - 1) };
-    const nextPage = () => { setPage(page + 1) };
-    const firstPage = () => { setPage(1) };
-    const lastPage = () => setPage((info.pages));
 
-    return (
-        <div className="d-flex justify-content-center my-4">
-                <Pagination size="lg">
-                    <Pagination.Prev onClick={prevPage} disabled={page === 1} />
-                    <Pagination.Item onClick={firstPage} disabled={page === 1} >{1}</Pagination.Item>
-                    <Pagination.Ellipsis disabled />
-                    <Pagination.Item active>{page}</Pagination.Item>
-                    <Pagination.Ellipsis disabled />
-                    <Pagination.Item onClick={lastPage} disabled={page === info.pages} >{info.pages}</Pagination.Item>
-                    <Pagination.Next onClick={nextPage} disabled={page === info.pages} />
-                </Pagination>
-            </div>
-    )
+
+  return (
+    <div className="my-5 pagination-position">
+          <ul className="d-flex justify-content-center align-items-center pagination mb-0">
+            {prevNext(currentPage - 1)}
+            {pagination()}
+            {prevNext(currentPage + 1)}
+          </ul>
+    </div>
+  );
 }

@@ -1,10 +1,8 @@
 import React from 'react';
 import {
-     Form, FormControl
+    Form, FormControl
 } from 'react-bootstrap';
 import { BiSearch } from 'react-icons/bi';
-import { MenuItem } from 'react-pro-sidebar';
-
 
 export default function InputName({ setName }) {
 
@@ -24,9 +22,9 @@ export default function InputName({ setName }) {
                 aria-label="Search"
             />
             <span className="icon-search me-2 h-100" >
-            <BiSearch />
+                <BiSearch />
             </span>
         </Form>
-        
+
     );
 }

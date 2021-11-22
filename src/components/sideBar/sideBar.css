@@ -1,6 +1,6 @@
 #sidebar {
   position: fixed;
-  /* width: 220px; */
+  top: 0;
   z-index: 1;
 }
 #sidebar .pro-sidebar {

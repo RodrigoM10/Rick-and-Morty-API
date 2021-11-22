@@ -3,7 +3,7 @@ import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import './characterFull.css';
 
 export default function CharacterFull({ character }) {
-    const { name, status, species, gender, location, image, created, episode } = character;
+    const { name, status, species, gender, image, created } = character;
     return (
             <Card className="card-character-full">
                 <Card.Img  variant="top" src={image} />
@@ -17,7 +17,6 @@ export default function CharacterFull({ character }) {
                     <ListGroupItem>Status : {status}</ListGroupItem>
                     <ListGroupItem>Specie : {species}</ListGroupItem>
                     <ListGroupItem>Gender : {gender}</ListGroupItem>
-                    {/* <ListGroupItem>Location : {location} </ListGroupItem> */}
                 </ListGroup>
                 <Card.Body>
                     <Card.Link href="#">Episodes</Card.Link>

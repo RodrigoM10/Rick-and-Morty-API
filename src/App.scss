@@ -1,5 +1,6 @@
-
-
+.body{
+  box-sizing: border-box;
+}
 .footer-fix {
   display: flex;
   flex-direction: column;
@@ -8,9 +9,9 @@
 .footer-style {
   backdrop-filter: blur(10px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(10px) saturate(100%) !important;
-  background-color: #111928f3 !important;
+  background-color: #111928 !important;
   color: white !important;
-  height: 100px !important;
+  // height: 100px !important;
   z-index: 200;
 }
 .background {

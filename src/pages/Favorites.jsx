@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { Container } from 'react-bootstrap'
-import { NavRB } from '../components/navbar/TheNav'
-import SideBar from '../components/sideBar/SideBar'
+
 import { useFavoritesContext } from '../context/favoritesContext'
 import { API_URL } from '../config/api'
 import { useFetch } from '../hooks/useFetch'
 import Character from '../components/card-character/Character'
 import { CardNoResults } from '../components/cardNoResults/CardNoResults'
 import { SpinLoader } from '../components/spinner/Spinner'
-import Pagination from '../components/pagination/PaginationJJ'
+import Pagination from '../components/pagination/Pagination'
 
 
 export default function Favorites() {
@@ -28,9 +26,9 @@ export default function Favorites() {
 
         const charactersSlice = characters.slice(start, end);
         setCharactersFavorites(charactersSlice);
-        
-    const totalPages = Math.ceil(characters.length / limit);
-    setTotalPages(totalPages);
+
+        const totalPages = Math.ceil(characters.length / limit);
+        setTotalPages(totalPages);
     }, [characters, page])
 
     const isFavorite = (id) => {
@@ -38,34 +36,32 @@ export default function Favorites() {
     };
 
     return (
-        <>
-            <SideBar />
-            <NavRB />
-            <Container >
-                <h2 className="title-section ">Favorites</h2>
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-end justify-content-sm-center align-items-center">
-                    {charactersFavorites.map((char) => (
-                        <Character
-                            key={char.id}
-                            character={char}
-                            onToggleFavorite={() => toggleFavorite(char.id)}
-                            isFavorite={isFavorite(char.id)}
-                        />
-                    ))}
-                    {!isLoading && !charactersFavorites.length && (
-                        <CardNoResults />
-                    )}
-                    <div className="position-fixed center-spinner">
-                        {<SpinLoader size="lg" isLoading={isLoading} />}
-                    </div>
+        < div className="d-flex flex-column justify-content-center align-items-center" >
+            <h2 className="title-section ">Favorites</h2>
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 me-3 justify-content-end align-items-center">
+                {charactersFavorites.map((char) => (
+                    <Character
+                        key={char.id}
+                        character={char}
+                        onToggleFavorite={() => toggleFavorite(char.id)}
+                        isFavorite={isFavorite(char.id)}
+                    />
+                ))}
+
+                {!isLoading && !charactersFavorites.length && (
+                    <CardNoResults />
+                )}
+
+                <div className="position-fixed center-spinner">
+                    {<SpinLoader size="lg" isLoading={isLoading} />}
                 </div>
-                <Pagination
-          currentPage={page}
-          totalPages={totalPages}
-          onSetPage={setPage}
-          isLoading={isLoading}
-        />
-            </Container>
-        </>
+            </div>
+            <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                onSetPage={setPage}
+                isLoading={isLoading}
+            />
+        </div >
     )
 }
