@@ -18,13 +18,15 @@ import IconGun from "../components/icons/IconGun";
 import IconStatus from "../components/icons/IconStatus";
 import IconLocation from "../components/icons/IconLocation";
 import IconSpecies from "../components/icons/IconSpecies";
-
+import { useFavoritesContext } from '../context/favoritesContext';
 
 export default function Characters() {
   const [characters, setCharacters] = useState([]);
   const [species, setSpecies] = useState("");
   const [status, setStatus] = useState("");
   const [name, setName] = useState("");
+
+  const { toggleFavorite, favorites } = useFavoritesContext();
 
   const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
   const [allCharacters, isLoadingCharacters] = useFetchAll(
@@ -67,6 +69,10 @@ export default function Characters() {
     setLocation(value);
   };
 
+  // Es favorito, si existe en el array favorites, un elemento fav que coincida con ese id.
+  const isFavorite = (id) => {
+    return favorites.some((fav) => fav === id);
+  }
 
   return (
     <>
@@ -104,7 +110,12 @@ export default function Characters() {
         <h2 className="title-section ">Rick and Morty</h2>
         <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-end justify-content-sm-center align-items-center">
           {characters.map((char) => (
-            <Character key={char.id} character={char} />
+            <Character 
+            key={char.id} 
+            character={char} 
+            onToggleFavorite={ () => toggleFavorite(char.id)}
+            isFavorite={isFavorite(char.id)}
+            />
           ))}
 
           {!isLoadingCharacters && !characters.length && (

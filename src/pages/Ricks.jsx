@@ -18,6 +18,7 @@ import IconGun from '../components/icons/IconGun';
 import IconSpecies from '../components/icons/IconSpecies';
 import IconStatus from '../components/icons/IconStatus';
 import IconLocation from '../components/icons/IconLocation';
+import { useFavoritesContext } from '../context/favoritesContext';
 
 export default function Ricks() {
     const [characters, setCharacters] = useState([]);
@@ -30,6 +31,8 @@ export default function Ricks() {
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
     const [location, setLocation] = useState('');
+
+  const { toggleFavorite, favorites } = useFavoritesContext();
 
     useEffect(() => {
         const limit = 15;
@@ -59,6 +62,9 @@ export default function Ricks() {
         setLocation(value);
     };
 
+    const isFavorite = (id) => {
+        return favorites.some((fav) => fav === id);
+      }
     return (
         <>
             <SideBar
@@ -92,7 +98,11 @@ export default function Ricks() {
             <Container>
                 <h2 className="title-section">ALL RICKS</h2>
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-end justify-content-sm-center align-items-center">
-                    {characters.map((char) => (<Character key={char.id} character={char} />
+                    {characters.map((char) => (<Character
+                     key={char.id}
+                    character={char}
+                    onToggleFavorite={ () => toggleFavorite(char.id)}
+                    isFavorite={isFavorite(char.id)} />
                     ))}
 
 

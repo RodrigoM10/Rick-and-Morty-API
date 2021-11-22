@@ -10,6 +10,7 @@ import InterdimensionalTV from "./pages/InterdimensionalTV"
 
 import { Switch, Route } from "react-router-dom";
 import CharacterDetails from "./pages/CharacterDetails";
+import { Favorites } from "./pages/Favorites";
 
 function App() {
 
@@ -36,6 +37,10 @@ function App() {
 
               <Route path="/character/:charID">
                 <CharacterDetails />
+              </Route>
+
+              <Route path="/favorites">
+                <Favorites />
               </Route>
               
           </Switch>

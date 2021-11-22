@@ -6,10 +6,10 @@ import { GoLocation } from 'react-icons/go';
 import { VscDebugBreakpointData } from 'react-icons/vsc';
 import {FaHeart} from 'react-icons/fa'
 
-export default function Character({ character }) {
+
+export default function Character({ character, onToggleFavorite, isFavorite }) {
 
   const { name, status, species, location, image, id } = character;
-
 
   return (
     <div className="p-0 card-character-container m-2 position-relative ">
@@ -26,8 +26,10 @@ export default function Character({ character }) {
           <h5 className="m-0 d-flex align-items-start"> <GoLocation className="me-2 icon-location" /> {location.name}</h5>
         </Card.Body>
       </Card>
-        <button className="favorite-btn" >
-          {}
+        <button 
+        className={isFavorite? 'is-favorite-btn': 'favorite-btn'}
+        onClick={onToggleFavorite}
+        >
           <FaHeart />
         </button>
     </div>

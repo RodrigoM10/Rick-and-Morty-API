@@ -123,7 +123,10 @@ export default function SideBar({ children }) {
                                         </Tooltip>)
                                 }
                             >
-                                <MenuItem icon={<IconFav />}>Favourite</MenuItem>
+                                <MenuItem icon={<IconFav />}>
+                                    Favourite
+                                    <Link to="/favorites" exact />
+                                    </MenuItem>
                             </OverlayTrigger>
                             <OverlayTrigger
                                 placement="right"

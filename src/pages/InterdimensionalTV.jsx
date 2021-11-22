@@ -15,6 +15,7 @@ import './characters.css'
 import IconGun from '../components/icons/IconGun';
 import IconStatus from '../components/icons/IconStatus';
 import IconSpecies from '../components/icons/IconSpecies';
+import { useFavoritesContext } from '../context/favoritesContext';
 
 
 export default function InterdimensionalTV() {
@@ -28,11 +29,14 @@ export default function InterdimensionalTV() {
     const [page, setPage] = useState(1);
     const [location, setLocation] = useState('Interdimensional Cable');
 
+
+    const { toggleFavorite, favorites } = useFavoritesContext();
+
     useEffect(() => {
         const limit = 15;
         const start = 0 + page * limit - limit;
         const end = start + limit;
-        
+
         const charactersFiltered = allCharacters
             .filter((char) => !location || char.location.name === location)
             .filter((char) => !species || char.species === species)
@@ -52,6 +56,10 @@ export default function InterdimensionalTV() {
         setSpecies(value);
     };
 
+    // Es favorito, si existe en el array favorites, un elemento fav que coincida con ese id.
+    const isFavorite = (id) => {
+        return favorites.some((fav) => fav === id);
+    }
     return (
         <>
             <SideBar
@@ -77,14 +85,19 @@ export default function InterdimensionalTV() {
             <Container className="container-pages">
                 <h2 className="title-section">ALL THE F*CKINGS INTERDIMENSIONAL CABLE STARS </h2>
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-end justify-content-sm-center align-items-center">
-                    {characters.map((char) => (<Character key={char.id} character={char} />
+                    {characters.map((char) => (<Character
+                     key={char.id} 
+                     character={char} 
+                     onToggleFavorite={ () => toggleFavorite(char.id)}
+                     isFavorite={isFavorite(char.id)}
+                     />
                     ))}
 
                     {/* No results message ↓ */}
                     {!isLoadingCharacters && !characters.length && (
                         <CardNoResults />
                     )}
-                    
+
                     {/* spinner */}
                     <div className="position-fixed center-spinner">
                         {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}

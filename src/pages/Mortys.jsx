@@ -17,6 +17,7 @@ import IconGun from '../components/icons/IconGun';
 import IconStatus from '../components/icons/IconStatus';
 import IconSpecies from '../components/icons/IconSpecies';
 import IconLocation from '../components/icons/IconLocation';
+import { useFavoritesContext } from '../context/favoritesContext';
 
 
 export default function Mortys() {
@@ -30,6 +31,8 @@ export default function Mortys() {
     const [totalPages, setTotalPages] = useState(0);
     const [page, setPage] = useState(1);
     const [location, setLocation] = useState('');
+    
+    const { toggleFavorite, favorites } = useFavoritesContext();
 
     useEffect(() => {
         const limit = 15;
@@ -59,7 +62,9 @@ export default function Mortys() {
         setPage(1);
         setLocation(value);
     };
-
+    const isFavorite = (id) => {
+        return favorites.some((fav) => fav === id);
+      }
 
     return (
         <>
@@ -95,7 +100,12 @@ export default function Mortys() {
                 <Container>
                     <h2 className="title-section">ALL MORTYS</h2>
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 justify-content-end justify-content-sm-center align-items-center">
-                        {characters.map((char) => (<Character key={char.id} character={char} />
+                        {characters.map((char) => (<Character 
+                        key={char.id}
+                         character={char} 
+                         onToggleFavorite={ () => toggleFavorite(char.id)}
+                         isFavorite={isFavorite(char.id)}
+                         />
                         ))}
 
                         {/* No results message ↓ */}

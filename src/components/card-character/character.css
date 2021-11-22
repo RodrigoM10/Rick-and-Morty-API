@@ -1,21 +1,22 @@
 .card-character-container{
     width: 25.5rem;
     height: 13rem;
+    transition: 0.2s;
 }
 .card-character{
     width: 25.5rem;
     height: 13rem;
     margin: 1rem;
     background: rgb(15, 69, 77);
-    color: white;
+    color: white !important;
     border: 2px solid black;
     border-radius: 0 1rem 1rem 0;
     overflow: hidden;
     transition: 0.2s;
 }
-.card-character:hover {
-    color: white;
+.card-character-container:hover {
     transform: scale(102%);
+    color: white;
 }
 .char-img {
     border-right : 2px solid black;
@@ -49,7 +50,27 @@
       left: 1.5rem;
       top: 1rem;
       font-size: 1.5rem;
-  }
+      opacity: 0.5;
+      transition: 0.5s;
+      }
+.card-character-container:hover .favorite-btn {
+    opacity: 1;
+}
   .favorite-btn:hover{
       color: rgb(9, 168, 9);
+      transform: rotateZ(720deg);
   }
+  .is-favorite-btn {
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    left: 1.5rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    color: rgb(9, 168, 9);
+  }
+.is-favorite-btn:hover {
+    color: rgba(9, 168, 9, 0.63);
+}
+
+
