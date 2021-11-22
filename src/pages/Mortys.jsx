@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {  Container } from 'react-bootstrap';
 import Character from '../components/card-character/Character';
 import { CardNoResults } from '../components/cardNoResults/CardNoResults';
@@ -17,22 +17,14 @@ import IconGun from '../components/icons/IconGun';
 import IconStatus from '../components/icons/IconStatus';
 import IconSpecies from '../components/icons/IconSpecies';
 import IconLocation from '../components/icons/IconLocation';
-import { useFavoritesContext } from '../context/favoritesContext';
 
 
-export default function Mortys() {
-    const [characters, setCharacters] = useState([]);
-    const [species, setSpecies] = useState('');
-    const [status, setStatus] = useState('');
 
-    const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
+export default function Mortys(
+    { characters, setCharacters, species, setSpecies, status, setStatus, locations, isLoadingLocations, totalPages, setTotalPages, page, setPage, location, toggleFavorite, isFavorite, clearFilterLocations, clearFilterSpecies, clearFilterStatus }
+
+) {
     const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=morty`);
-
-    const [totalPages, setTotalPages] = useState(0);
-    const [page, setPage] = useState(1);
-    const [location, setLocation] = useState('');
-    
-    const { toggleFavorite, favorites } = useFavoritesContext();
 
     useEffect(() => {
         const limit = 15;
@@ -47,25 +39,7 @@ export default function Mortys() {
         setCharacters(charactersSlice);
         const totalPages = Math.ceil(charactersFiltered.length / limit);
         setTotalPages(totalPages);
-    }, [allCharacters, page, location, species, status]);
-
-
-    const clearFilterStatus = (value) => {
-        setPage(1);
-        setStatus(value);
-    };
-    const clearFilterSpecies = (value) => {
-        setPage(1);
-        setSpecies(value);
-    };
-    const clearFilterLocations = (value) => {
-        setPage(1);
-        setLocation(value);
-    };
-    const isFavorite = (id) => {
-        return favorites.some((fav) => fav === id);
-      }
-
+    }, [allCharacters, page, location, species, status, setTotalPages, setCharacters]);
     return (
         <>
             <SideBar

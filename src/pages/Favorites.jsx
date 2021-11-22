@@ -4,14 +4,14 @@ import { NavRB } from '../components/navbar/TheNav'
 import SideBar from '../components/sideBar/SideBar'
 import { useFavoritesContext } from '../context/favoritesContext'
 import { API_URL } from '../config/api'
-import { useFetch, useFetchAll } from '../hooks/useFetch'
+import { useFetch } from '../hooks/useFetch'
 import Character from '../components/card-character/Character'
 import { CardNoResults } from '../components/cardNoResults/CardNoResults'
 import { SpinLoader } from '../components/spinner/Spinner'
 import Pagination from '../components/pagination/PaginationJJ'
 
 
-export const Favorites = () => {
+export default function Favorites() {
     // favorites page logic
     const { toggleFavorite, favorites } = useFavoritesContext();
     const favsParam = favorites.length ? favorites : 0;

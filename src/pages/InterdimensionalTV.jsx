@@ -15,22 +15,16 @@ import './characters.css'
 import IconGun from '../components/icons/IconGun';
 import IconStatus from '../components/icons/IconStatus';
 import IconSpecies from '../components/icons/IconSpecies';
-import { useFavoritesContext } from '../context/favoritesContext';
 
 
-export default function InterdimensionalTV() {
-    const [characters, setCharacters] = useState([]);
-    const [species, setSpecies] = useState('');
-    const [status, setStatus] = useState('');
+export default function InterdimensionalTV(
+    { characters, setCharacters, species, setSpecies, status, setStatus, totalPages, setTotalPages, page, setPage, toggleFavorite, isFavorite,  clearFilterSpecies, clearFilterStatus }
+
+) {
 
     const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character`);
 
-    const [totalPages, setTotalPages] = useState(0);
-    const [page, setPage] = useState(1);
     const [location, setLocation] = useState('Interdimensional Cable');
-
-
-    const { toggleFavorite, favorites } = useFavoritesContext();
 
     useEffect(() => {
         const limit = 15;
@@ -45,21 +39,8 @@ export default function InterdimensionalTV() {
         setCharacters(charactersSlice);
         const totalPages = Math.ceil(charactersFiltered.length / limit);
         setTotalPages(totalPages);
-    }, [allCharacters, page, location, species, status]);
+    }, [allCharacters, page, location, species, status, setTotalPages, setCharacters]);
 
-    const clearFilterStatus = (value) => {
-        setPage(1);
-        setStatus(value);
-    };
-    const clearFilterSpecies = (value) => {
-        setPage(1);
-        setSpecies(value);
-    };
-
-    // Es favorito, si existe en el array favorites, un elemento fav que coincida con ese id.
-    const isFavorite = (id) => {
-        return favorites.some((fav) => fav === id);
-    }
     return (
         <>
             <SideBar
