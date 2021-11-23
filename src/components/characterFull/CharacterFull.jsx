@@ -3,14 +3,21 @@ import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import './characterFull.css';
 
 export default function CharacterFull({ character }) {
-    const { name, status, species, gender, image, created } = character;
+    console.log("🚀 ~ file: CharacterFull.jsx ~ line 6 ~ CharacterFull ~ character", character)
+    const { name, status, species, gender, image, created} = character;
     return (
-            <Card className="card-character-full">
-                <Card.Img  variant="top" src={image} />
+            <div className="row row-cols-2 p-0 card-character-full">
+                <div className="p-0">
+                <Card.Img className="image-full w-100" variant="top" src={image} />
+                </div>
+                <div className="d-flex flex-column">
                 <Card.Body>
-                    <Card.Title >{name}</Card.Title>
+                    <Card.Title>{name}</Card.Title>
                     <Card.Text>
                         This character was created on {new Date(created).toDateString()}
+                    </Card.Text>
+                    <Card.Text>
+                    {/* Current location: {character.location.name} */}
                     </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
@@ -22,6 +29,7 @@ export default function CharacterFull({ character }) {
                     <Card.Link href="#">Episodes</Card.Link>
                     <Card.Link >More info</Card.Link>
                 </Card.Body>
-            </Card>
+                </div>
+            </div>
     );
 }

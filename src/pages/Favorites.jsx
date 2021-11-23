@@ -7,6 +7,7 @@ import Character from '../components/card-character/Character'
 import { CardNoResults } from '../components/cardNoResults/CardNoResults'
 import { SpinLoader } from '../components/spinner/Spinner'
 import Pagination from '../components/pagination/Pagination'
+import { Container } from 'react-bootstrap'
 
 
 export default function Favorites() {
@@ -36,6 +37,7 @@ export default function Favorites() {
     };
 
     return (
+    <Container className="ps-auto">
         < div className="d-flex flex-column justify-content-center align-items-center" >
             <h2 className="title-section ">Favorites</h2>
             <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 me-3 justify-content-end align-items-center">
@@ -63,5 +65,7 @@ export default function Favorites() {
                 isLoading={isLoading}
             />
         </div >
+    </Container>
+        
     )
 }

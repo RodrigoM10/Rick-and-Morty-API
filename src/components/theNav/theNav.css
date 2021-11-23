@@ -4,17 +4,7 @@
   background-color: #111928b0 !important;
   color: white !important;
   z-index: 1;
-  height: 56.5px;
-}
-
-.icon-search {
-  background-color: rgb(44, 163, 179);
-  color: rgb(243, 243, 243);
-  border-radius: 3px;
-  width: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* height: 56.5px; */
 }
 
 .remove-btn {
@@ -28,4 +18,12 @@
 .remove-btn:hover {
   border: 2px solid red;
   color: red;
+}
+.back-btn{
+  width: 3.5rem;
+  border-radius: 6rem;
+}
+.back-btn:hover {
+  background: rgb(15, 86, 134);
+  color: rgb(6, 255, 6);
 }

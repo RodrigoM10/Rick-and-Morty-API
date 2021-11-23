@@ -27,10 +27,13 @@ function App() {
   const [status, setStatus] = useState("");
   const [location, setLocation] = useState('');
 
+  const [search, setSearch] = useState('');
+
   // Peticion locations
   const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
   // FavoritesContext
   const { toggleFavorite, favorites } = useFavoritesContext();
+  console.log("🚀 ~ file: App.jsx ~ line 34 ~ App ~ favorites", favorites)
   const isFavorite = (id) => {
     return favorites.some((fav) => fav === id);
   }
@@ -66,9 +69,11 @@ function App() {
       species={species}
       status={status}
       onSelect={clearAllFilter}
+      setSearch={setSearch}
       />
       <div>
         <SideBar
+      favorites={favorites}
           species={species}
           setSpecies={setSpecies}
           status={status}
@@ -79,8 +84,8 @@ function App() {
           clearFilterStatus={clearFilterStatus}
           clearFilterSpecies={clearFilterSpecies}
           clearFilterLocations={clearFilterLocations}
+          setSearch={setSearch}
         />
-        <Container className="ps-auto">
           <Switch>
             <Route path="/" exact>
               <Characters
@@ -95,6 +100,7 @@ function App() {
                 location={location}
                 toggleFavorite={toggleFavorite}
                 isFavorite={isFavorite}
+                search={search}
               />
             </Route>
             <Route path="/ricks">
@@ -110,6 +116,7 @@ function App() {
                 location={location}
                 toggleFavorite={toggleFavorite}
                 isFavorite={isFavorite}
+                search={search}
               />
             </Route>
             <Route path="/mortys">
@@ -125,6 +132,7 @@ function App() {
                 location={location}
                 toggleFavorite={toggleFavorite}
                 isFavorite={isFavorite}
+                search={search}
               />
             </Route>
             <Route path="/interdimensionalTV">
@@ -139,16 +147,16 @@ function App() {
                 setPage={setPage}
                 toggleFavorite={toggleFavorite}
                 isFavorite={isFavorite}
+                search={search}
               />
-            </Route>
-            <Route path="/character/:charID">
-              <CharacterDetails />
             </Route>
             <Route path="/favorites">
               <Favorites />
             </Route>
+            <Route path="/character/:charID">
+              <CharacterDetails />
+            </Route>
           </Switch>
-        </Container>
       </div>
       <Footer />
     </div>

@@ -2,28 +2,21 @@ import React from 'react';
 import {
     Form, FormControl
 } from 'react-bootstrap';
-import { BiSearch } from 'react-icons/bi';
+import './inputName.css'
 
-export default function InputName({ setName }) {
+export default function InputName({ searching }) {
 
-    const handleChange = (event) => {
-        const { value } = event.target;
-        setName(value);
-    };
 
     return (
-        <Form className="d-flex justify-content-center align-items-center">
+        <Form className=" input-name d-flex justify-content-center align-items-center me-2">
             <FormControl
                 name="searchName"
-                onChange={(e) => handleChange(e)}
+                onChange={searching}
                 type="search"
                 placeholder="Search a character..."
                 className="mr-2"
                 aria-label="Search"
             />
-            <span className="icon-search me-2 h-100" >
-                <BiSearch />
-            </span>
         </Form>
 
     );

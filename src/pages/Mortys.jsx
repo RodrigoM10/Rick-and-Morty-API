@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Container } from 'react-bootstrap';
 import Character from '../components/card-character/Character';
 import { CardNoResults } from '../components/cardNoResults/CardNoResults';
 import Pagination from '../components/pagination/Pagination';
@@ -13,28 +14,40 @@ import './characters.css'
 
 
 export default function Mortys(
-    { characters, setCharacters, species, status, totalPages, setTotalPages, page, setPage, location, toggleFavorite, isFavorite }
+    { characters, setCharacters, species, status, totalPages, setTotalPages, page, setPage, location, toggleFavorite, isFavorite, search }
 
 ) {
     const [allCharacters, isLoadingCharacters] = useFetchAll(`${API_URL}/character/?name=morty`);
-
+  
     useEffect(() => {
-        const limit = 15;
-        const start = 0 + page * limit - limit;
-        const end = start + limit;
-
-        const charactersFiltered = allCharacters
-            .filter((char) => !location || char.location.name === location)
-            .filter((char) => !species || char.species === species)
-            .filter((char) => !status || char.status === status);
-        const charactersSlice = charactersFiltered.slice(start, end);
-        setCharacters(charactersSlice);
-        const totalPages = Math.ceil(charactersFiltered.length / limit);
-        setTotalPages(totalPages);
-    }, [allCharacters, page, location, species, status, setTotalPages, setCharacters]);
-
+      const limit = 15;
+      const start = 0 + page * limit - limit;
+      const end = start + limit;
+  
+      const filteredCharacters = allCharacters
+        .filter((char) => !location || char.location.name === location)
+        .filter((char) => !species || char.species === species)
+        .filter((char) => !status || char.status === status)
+  
+        let searchedCharacters = [];
+  
+        if(search.length !== ''){ 
+          searchedCharacters = filteredCharacters.filter((charact) => {
+            return charact.name.toLowerCase().includes(search.toLowerCase());
+          });
+        } else {
+          searchedCharacters = filteredCharacters;
+        }
+  
+      const charactersSlice = searchedCharacters.slice(start, end);
+      setCharacters(charactersSlice);
+  
+      const totalPages = Math.ceil(searchedCharacters.length / limit);
+      setTotalPages(totalPages);
+    }, [allCharacters, page, location, species, status, setTotalPages, setCharacters, search]);
     
     return (
+      <Container className="ps-auto">     
         <div className="d-flex flex-column justify-content-center align-items-center">
         <h2 className="title-section ">All Mortys</h2>
         <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 me-3 justify-content-end align-items-center">
@@ -62,5 +75,7 @@ export default function Mortys(
           isLoading={isLoadingCharacters}
         />
       </div>
+      </Container>
+          
     );
 };
