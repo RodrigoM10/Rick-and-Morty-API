@@ -125,7 +125,7 @@ export default function SideBar({
                                     <Link to="/interdimensionalTV" />
                                 </MenuItem>
                             </OverlayTrigger>
-                            {splitLocation[1] !== 'favorites' && splitLocation[1] !== 'character'  &&
+                            {splitLocation[1] !== 'favorites'  &&
                                 <SubMenu title="Filter" icon={<IconGun />}>
                                     {splitLocation[1] !== 'interdimensionalTV' &&
                                         <MenuItem icon={<IconLocation />}>
@@ -137,18 +137,18 @@ export default function SideBar({
                                             />
                                         </MenuItem>
                                     }
-                                    <MenuItem icon={<IconStatus />}>
-                                        <SelectStatus
-                                            setStatus={setStatus}
-                                            status={status}
-                                            onSelect={clearFilterStatus}
-                                        />
-                                    </MenuItem>
                                     <MenuItem icon={<IconSpecies />}>
                                         <SelectSpecies
                                             setSpecies={setSpecies}
                                             species={species}
                                             onSelect={clearFilterSpecies}
+                                        />
+                                    </MenuItem>
+                                    <MenuItem icon={<IconStatus />}>
+                                        <SelectStatus
+                                            setStatus={setStatus}
+                                            status={status}
+                                            onSelect={clearFilterStatus}
                                         />
                                     </MenuItem>
                                 </SubMenu>

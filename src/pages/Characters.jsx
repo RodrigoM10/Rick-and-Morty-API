@@ -33,7 +33,7 @@ export default function Characters(
   return (
       <div className="d-flex flex-column justify-content-center align-items-center">
         <h2 className="title-section ">Rick and Morty</h2>
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 me-3 justify-content-end align-items-center">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 me-3 justify-content-end justify-content-md-center align-items-center">
           {characters.map((char) => (
             <Character
               key={char.id}

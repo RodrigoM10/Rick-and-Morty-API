@@ -18,7 +18,7 @@ export default function SelectLocation({ locations, location, onSelect }) {
 
 
     return (
-        <Form className="d-flex align-items-center ms-lg-3 my-2 my-lg-0">
+        <Form className="d-flex align-items-center my-2 my-lg-0">
             <div className="d-flex position-relative align-items-center">
                 <Form.Select
                 
@@ -41,7 +41,7 @@ export default function SelectLocation({ locations, location, onSelect }) {
             </div>
             <CloseButton
                 onClick={clearSelect}
-                className={`ms-2 ${visibleClear}`}
+                className={`mx-2 ${visibleClear}`}
                 variant="white"
                 aria-label="Descartar filtro"
             />

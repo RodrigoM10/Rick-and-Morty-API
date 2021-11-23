@@ -25,7 +25,7 @@ function App() {
   const [characters, setCharacters] = useState([]);
   const [species, setSpecies] = useState("");
   const [status, setStatus] = useState("");
-  // const [name, setName] = useState("");
+  const [location, setLocation] = useState('');
 
   // Peticion locations
   const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
@@ -37,9 +37,14 @@ function App() {
   // Pagination
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
-  const [location, setLocation] = useState('');
 
   // Clear Filter Functions
+  const clearAllFilter = (value) => {
+    setPage(1);
+    setStatus(value);
+    setSpecies(value);
+    setLocation(value);
+  }
   const clearFilterStatus = (value) => {
     setPage(1);
     setStatus(value);
@@ -56,7 +61,12 @@ function App() {
   return (
 
     <div className="background footer-fix">
-      <TheNav />
+      <TheNav 
+      location={location}
+      species={species}
+      status={status}
+      onSelect={clearAllFilter}
+      />
       <div>
         <SideBar
           species={species}
