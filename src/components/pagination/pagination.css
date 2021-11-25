@@ -10,8 +10,8 @@
     }
     @media only screen and (max-width: 576px) {
         .pagination-position{
-            margin: 2rem 2rem 2rem 7rem;
-            width: 75%;
+          margin: 1rem 0.6rem 1rem auto !important;
+          width: 75%;
   }
   }
 

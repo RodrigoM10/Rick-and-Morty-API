@@ -12,7 +12,7 @@ export default function Character({ character, onToggleFavorite, isFavorite }) {
   const { name, status, species, location, image, id } = character;
 
   return (
-    <div className="p-0 card-character-container m-2 position-relative ">
+    <div className="p-0 card-character-container position-relative ">
         <Card as={Link} to={`character/${id}`} className=" px-0 text-decoration-none card-character row row-cols-1 row-cols-lg-2">    
         <div className="px-0">
           <Card.Img className="rounded-0 char-img glass-card" src={image} />

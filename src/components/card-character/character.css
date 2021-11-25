@@ -2,11 +2,11 @@
     width: 25.5rem;
     height: 13rem;
     transition: 0.2s;
+    margin: 0.5rem;
 }
 .card-character{
     width: 25.5rem;
     height: 13rem;
-    margin: 1rem;
     background: rgb(15, 69, 77);
     color: white !important;
     border: 2px solid black;
@@ -47,8 +47,8 @@
       border: 0;
       background-color: transparent;
       position: absolute;
-      left: 1.5rem;
-      top: 1rem;
+      left: -0.5rem;
+      top: 0rem;
       font-size: 1.5rem;
       opacity: 0.5;
       transition: 0.5s;

@@ -4,7 +4,6 @@
   background-color: #111928b0 !important;
   color: white !important;
   z-index: 1;
-  /* height: 56.5px; */
 }
 
 .remove-btn {
@@ -27,3 +26,11 @@
   background: rgb(15, 86, 134);
   color: rgb(6, 255, 6);
 }
+.breadcrumb-style {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* ms-auto d-md-flex align-items-center justify-content-between mb-0 */

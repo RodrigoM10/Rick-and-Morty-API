@@ -59,7 +59,7 @@ export default function SideBar({
                     <ProSidebar collapsed={menuCollapse}>
                         <SidebarHeader>
                             <div className="closemenu d-flex justify-content-center align-items-center">
-                                <span>{menuCollapse ? " " : <InputName searching={searching} />}</span>
+                                <span className="d-block d-md-none">{menuCollapse ? " " : <InputName searching={searching} />}</span>
                                 <div onClick={menuIconClick}>
                                     {menuCollapse ? (
                                         <BsFilterLeft />

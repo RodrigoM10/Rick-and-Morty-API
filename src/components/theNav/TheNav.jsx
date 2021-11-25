@@ -2,6 +2,7 @@ import { AiOutlineClear } from 'react-icons/ai';
 import InputName from '../filters/InputName';
 import { useLocation } from 'react-router-dom';
 import './theNav.css'
+import { useState } from 'react';
 export const TheNav = ({ location, species, status, onSelect, setSearch }) => {
     const locationUse = useLocation();
     const { pathname } = locationUse;
@@ -9,13 +10,14 @@ export const TheNav = ({ location, species, status, onSelect, setSearch }) => {
 
     let filter = `${location}, ${species}, ${status}`
     let filterArr = filter.split(',');
-    const visibleTag = location || species || status ? '' : 'invisible';
+    
     const visibleBtn = location || species || status ? '' : 'invisible';
+    const visibleTag = location || species || status ? '' : 'invisible';
 
-    const mapFilterArr = filterArr.map((filt) => (
+    const mapFilterArr = filterArr.map((filtered, index) => (
         <li
-
-            className={`mx-1 breadcrumb-item ${visibleTag}`}>{filt}</li>
+            key={index}
+            className={`mx-1 breadcrumb-item ${visibleTag}`}>{filtered}</li>
     ))
 
     const clearFilter = () => {

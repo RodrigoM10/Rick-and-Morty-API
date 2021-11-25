@@ -44,9 +44,9 @@ export default function Characters(
 
   return (
     <Container className="ps-auto">
-      <div className="d-flex flex-column justify-content-center align-items-center">
+      <div className="d-flex flex-column justify-content-center  align-items-end align-items-md-center">
         <h2 className="title-section ">Rick and Morty</h2>
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 me-3 justify-content-end justify-content-md-center align-items-center">
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3  justify-content-end justify-content-md-center align-items-center">
           {characters.map((char) => (
             <Character
               key={char.id}
@@ -64,12 +64,12 @@ export default function Characters(
             {<SpinLoader size="lg" isLoading={isLoadingCharacters} />}
           </div>
         </div>
-        <Pagination
-          currentPage={page}
-          totalPages={totalPages}
-          onSetPage={setPage}
-          isLoading={isLoadingCharacters}
-        />
+      <Pagination
+        currentPage={page}
+        totalPages={totalPages}
+        onSetPage={setPage}
+        isLoading={isLoadingCharacters}
+      />
       </div>
     </Container>
 

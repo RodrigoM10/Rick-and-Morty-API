@@ -1,13 +1,29 @@
 .card-character-full{
     width: 50rem;
-    height: 55vh;
+    height: 45vh;
     margin: 1rem;
     background: rgb(15, 69, 77);
     color: white;
-    border: 2px solid black;
+    border-radius: 0 1rem 1rem 0;
+    flex-direction: row;
 }
 .image-full {
-    width: 22rem;
-    height: 100%;
-    border-right : 2px solid black;
+    width: 100% ;
+    border : 5px solid black;
 }
+.list-group-style {
+    border : 2px solid black;
+}
+
+@media only screen and (max-width: 992px) {
+    .card-character-full{
+      max-width: 100%;
+      height: auto;
+      border-radius: 0 0 1rem 1rem;
+      flex-direction: column;
+    }
+    .image-full {
+        /* width: 18rem; */
+        border-bottom: 2px solid black;
+    }
+  }

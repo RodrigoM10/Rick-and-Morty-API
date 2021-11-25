@@ -33,7 +33,7 @@ function App() {
   const [locations, isLoadingLocations] = useFetchAll(`${API_URL}/location`);
   // FavoritesContext
   const { toggleFavorite, favorites } = useFavoritesContext();
-  console.log("🚀 ~ file: App.jsx ~ line 34 ~ App ~ favorites", favorites)
+
   const isFavorite = (id) => {
     return favorites.some((fav) => fav === id);
   }

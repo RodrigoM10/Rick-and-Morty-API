@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
 export default function CharacterDetails() {
   const {charID} = useParams();
   const [character, isLoading] = useFetch(`${API_URL}/character/${charID}`);
+
   return (
     <>
     <nav className="navbar sticky-top py-1 px-3" bg="dark" variant="dark" expand="lg" >
@@ -19,9 +20,8 @@ export default function CharacterDetails() {
                     <Button as={Link} to='/'  className="back-btn"><RiArrowGoBackLine/></Button >
     </nav>
         <Container>
-      <div className="d-flex justify-content-center align-items-center text-center m-auto">
+      <div className="d-flex justify-content-center align-items-center mt-5 text-center">
         <CharacterFull character={character} />
-        
         <div className="position-fixed center-spinner">
           {<SpinLoader size="lg" isLoading={isLoading}/>}
         </div>
