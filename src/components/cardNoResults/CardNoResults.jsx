@@ -11,7 +11,7 @@ export const CardNoResults = () => {
 
     return (
 
-        <div className="glass-card w-100 text-center text-white-50 p-3 mt-5 d-flex align-items-center">
+        <div className="glass-card w-100 text-center text-white-50 me-2 px-0 py-1 mx-md-0 p-md-3 mt-5 d-flex justify-content-end justify-content-md-center align-items-center">
             <div className=" px-0">
                 <Card.Img className="poopy-img" src="https://res.cloudinary.com/dcx1rcwvu/image/upload/v1630686328/rick%20and%20morty/PikPng.com_rick-and-morty-png_3568759_lo2kna.png" />
             </div>

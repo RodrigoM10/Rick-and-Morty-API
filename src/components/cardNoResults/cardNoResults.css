@@ -31,20 +31,19 @@
     -webkit-backdrop-filter: blur(10px) saturate(180%) !important;
     background-color: #111928b0 !important;
 }
-/* 
-@media only screen and (max-width: 992px) {
-    .ballon {
-        width: 16rem;
-        border-radius: 0 0 1rem 1rem;
-        height: 27rem;
+
+@media only screen and (max-width: 630px) {
+    .balloon {
+        width: 10rem;
+        margin: 0 1rem;
     }
     .balloon::before {
-        width: 16rem;
-        height: 27rem;
+        content: ""; /* propiedad necesaria */
+        position: absolute;
+        top: 135px;
     }
-    .char-img {
-        height: 15rem;
-        border-right: 0;
-        border-bottom: 2px solid black;
+    .poopy-img {
+        width: 3rem;
+        height: 3rem;
     }
-} */
+}
