@@ -64,8 +64,8 @@
     border: 0;
     background-color: transparent;
     position: absolute;
-    left: 1.5rem;
-    top: 1rem;
+    left: -0.5rem;
+    top: 0rem;
     font-size: 1.5rem;
     color: rgb(9, 168, 9);
   }
