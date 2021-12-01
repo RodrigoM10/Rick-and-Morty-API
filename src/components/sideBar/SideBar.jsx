@@ -133,7 +133,7 @@ export default function SideBar({
                                     </MenuItem>
                                 </OverlayTrigger>
                                 {splitLocation[1] !== 'favorites' &&
-                                    <SubMenu title="Filter" icon={<IconGun />}>
+                                    <SubMenu   title="Filter" icon={<IconGun />}>
                                         {splitLocation[1] !== 'interdimensionalTV' &&
                                             <MenuItem icon={<IconLocation />}>
                                                 <SelectLocation

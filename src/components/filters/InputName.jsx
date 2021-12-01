@@ -4,14 +4,14 @@ import {
 } from 'react-bootstrap';
 import './inputName.css'
 
-export default function InputName({ searching }) {
+export default function InputName({ Searching }) {
 
 
     return (
         <Form className=" input-name d-flex justify-content-center align-items-center me-2">
             <FormControl
                 name="searchName"
-                onChange={searching}
+                onChange={Searching}
                 type="search"
                 placeholder="Search a character..."
                 className="mr-2"

@@ -25,7 +25,7 @@ export const TheNav = ({ location, species, status, onSelect, setSearch }) => {
     };
 
     // Funcion de busqueda
-    const searching = (e) => {
+    const Searching = (e) => {
         e.preventDefault();
         const keyword = e.target.value;
         setSearch(keyword);
@@ -49,7 +49,7 @@ export const TheNav = ({ location, species, status, onSelect, setSearch }) => {
                     </li>
                 </ol>
                 <div className="d-none d-md-block">
-                    <InputName searching={searching} />
+                    <InputName Searching={Searching} />
                 </div>
             </nav>
         }
