@@ -18,7 +18,6 @@ import { useFavoritesContext } from "./context/favoritesContext";
 import { useFetchAll } from "./hooks/useFetch";
 import { TheNav } from "./components/theNav/TheNav";
 import SideBar from "./components/sideBar/SideBar";
-import { Container } from "react-bootstrap";
 
 function App() {
 
