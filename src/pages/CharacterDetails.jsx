@@ -17,7 +17,6 @@ export default function CharacterDetails() {
     <nav className="navbar sticky-top py-1 px-3" bg="dark" variant="dark" expand="lg" >
                     <Button as={Link} to='/'  className="back-btn"><RiArrowGoBackLine/></Button >
                     <h2 className=" mx-auto text-center">Character Details</h2>
-                    <Button as={Link} to='/'  className="back-btn"><RiArrowGoBackLine/></Button >
     </nav>
         <Container>
       <div className="d-flex justify-content-center align-items-center mt-5 text-center">
